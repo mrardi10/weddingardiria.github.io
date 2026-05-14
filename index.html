@@ -1,0 +1,2175 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>The Wedding Of Ardi & Ria</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="styles/invitation_main.css" />
+  </head>
+
+  <body>
+    <!-- Topbar -->
+    <header class="topbar" aria-label="Navigation">
+      <div class="inner">
+        <div class="brand">
+          <span class="logo" aria-hidden="true"></span>
+          <span id="brandText">Wedding</span>
+        </div>
+        <nav class="navlinks" aria-label="Section links">
+          <a href="#save">Save</a>
+          <a href="#verse">Verse</a>
+          <a href="#couple">Mempelai</a>
+          <a href="#event">Acara</a>
+          <a href="#story">Story</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#gift">Gift</a>
+          <a href="#wishes">Ucapan</a>
+          <a href="#closing">Penutup</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Cover / Opening Overlay -->
+    <div class="overlay" id="overlay">
+      <div
+        class="cover"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Cover undangan"
+      >
+        <div class="content">
+          <div class="smallcaps">THE WEDDING OF</div>
+          <div class="nx-title" id="coverNames">
+            [Nama Pria] &amp; [Nama Wanita]
+          </div>
+          <div class="date" id="coverDate">[Hari, Tanggal Bulan Tahun]</div>
+
+          <div class="dear">Dear, <b id="guestName">Tamu Undangan</b></div>
+          <div class="desc" id="coverDesc">
+            Dengan segala hormat, kami mengundang
+            Bapak/Ibu/Saudara/i/Teman/Sahabat serta para kerabat untuk hadir dan
+            memberikan doa restu pada hari bahagia kami.
+          </div>
+
+          <div class="actions">
+            <button class="btn primary" id="openBtn">Buka Undangan</button>
+            <!-- <button class="btn ghost" id="guestBtn" title="Ubah nama tamu di URL">Set Nama Tamu</button> -->
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="content" style="padding-top: 18px">
+          <span class="badge"
+            ><span class="dot"></span> Scroll untuk melihat detail setelah
+            undangan dibuka</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Transition -->
+    <div class="transition" id="transition" aria-hidden="true">
+      <div class="loader">
+        <div style="font-weight: 800; letter-spacing: 0.8px">
+          Loading our story…
+        </div>
+        <div class="bar"><span></span></div>
+        <div style="font-size: 12px; color: rgba(255, 255, 255, 0.55)">
+          Please wait a moment
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating music button -->
+    <div class="fab" id="fab">
+      <button class="btn" id="musicBtn" aria-label="Toggle music">
+        🔊 Music
+      </button>
+    </div>
+
+    <div class="toast" id="toast">Copied!</div>
+
+    <!-- MAIN CONTENT -->
+    <main>
+      <!-- Save the Date -->
+      <section class="section" id="save">
+        <div class="wrap">
+          <!-- HERO BANNER (video teaser) -->
+          <div class="heroBanner card">
+            <div class="heroMedia" id="heroMedia">
+              <!-- Video teaser -->
+              <video
+                id="teaserVideo"
+                class="heroVideo"
+                playsinline
+                muted
+                loop
+                preload="metadata"
+              >
+                <source src="videos/opening.mp4" />
+                Browser kamu tidak mendukung video.
+              </video>
+
+              <!-- overlay gradient biar teks kebaca -->
+              <div class="heroOverlay"></div>
+
+              <!-- badge/top label -->
+              <div class="heroTop">
+                <span class="pill"
+                  ><span class="dot"></span> SAVE THE DATE</span
+                >
+              </div>
+
+              <!-- big text + CTA -->
+              <div class="heroContent">
+                <div class="heroTitle" id="saveTitle">
+                  The Wedding of <br />
+                  Ardi &amp; Ria
+                </div>
+                <div class="heroDate" id="saveDateText">
+                  Sabtu, 30 Agustus 2026
+                </div>
+                <p class="heroDesc">
+                  Tandai tanggalnya, siapkan doa restu, dan jangan lupa bawa
+                  senyum terbaik untuk hari bahagia kami!
+                </p>
+
+                <div class="heroActions">
+                  <a
+                    class="btn primary"
+                    id="gcalBtn"
+                    target="_blank"
+                    rel="noopener"
+                    >Save to Google Calendar</a
+                  >
+                  <!-- <button class="btn" id="copyLinkBtn" type="button">
+                    Copy Link
+                  </button> -->
+
+                  <!-- kontrol video -->
+                  <button
+                    class="btn ghost"
+                    id="videoToggleBtn"
+                    type="button"
+                    aria-label="Play/Pause video"
+                  >
+                    ⏸ Pause
+                  </button>
+                  <button
+                    class="btn ghost"
+                    id="muteToggleBtn"
+                    type="button"
+                    aria-label="Mute/Unmute video"
+                  >
+                    🔇 Muted
+                  </button>
+                </div>
+
+                <div class="mini heroHint">
+                  Tip: klik video untuk play/pause.
+                </div>
+              </div>
+            </div>
+
+            <!-- SIDE CARD (Opening note + verse) -->
+            <div class="heroSide">
+              <div class="pad">
+                <!-- judul English, tapi bukan “Salam Pembuka” -->
+                <div class="sideHead">
+                  <span class="pill"
+                    ><span class="dot"></span> OPENING NOTE</span
+                  >
+                </div>
+
+                <p style="margin-top: 12px">
+                  <i> Assalamu’alaikum Warahmatullahi Wabarakatuh. </i>
+                </p>
+                <p>
+                  Dengan memohon rahmat dan ridha Allah SWT, kami bermaksud
+                  mengundang Bapak/Ibu/Saudara/i/Teman/Sahabat serta para
+                  kerabat untuk menghadiri acara pernikahan kami.
+                </p>
+                <div class="noteFooter">
+                  <img
+                    class="noteLogo"
+                    src="images/logo.png"
+                    alt="Logo pasangan"
+                  />
+                  <div class="noteHash">#HariBahaRiaArdi</div>
+                  <div class="noteMini">Save the date • See you there</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="verse">
+        <div class="wrap">
+          <div class="rowhead">
+            <div>
+              <h2 style="margin: 0">Guiding Verse</h2>
+              <div class="sub">A reminder of why we begin.</div>
+            </div>
+            <span class="badge"
+              ><span class="dot"></span> QS. Ar-Rum [30]: 21</span
+            >
+          </div>
+
+          <div class="card">
+            <div class="pad">
+              <p class="mini" style="margin: 0 0 12px">
+                Sebagaimana yang Allah SWT. firmankan tentang pasangan,
+                ketenteraman, serta kasih dan sayang dalam rumah tangga.
+              </p>
+
+              <blockquote style="margin-top: 10px">
+                “Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan
+                pasangan-pasangan untukmu dari jenismu sendiri, agar kamu
+                cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di
+                antaramu rasa kasih dan sayang.”
+                <footer>QS. Ar-Rum [30]: 21</footer>
+              </blockquote>
+
+              <p class="mini" style="margin-top: 12px">
+                Semoga Allah SWT memberkahi langkah kami, melapangkan jalan
+                kebaikan, dan menjadikan pernikahan ini sebagai awal keluarga
+                yang sakinah, mawaddah, warahmah.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Couple -->
+      <section class="section" id="couple">
+        <div class="wrap">
+          <div class="rowhead">
+            <div>
+              <h2 style="margin: 0">Perkenalan Mempelai</h2>
+              <div class="sub">Dua pemeran utama, satu cerita selamanya.</div>
+            </div>
+            <!-- <span class="badge">
+              <span class="dot"></span> Tap tombol Instagram untuk cek
+              profil
+            </span> -->
+          </div>
+
+          <div class="card profileCard">
+            <div class="profileMedia">
+              <img id="imgGroom" alt="Foto mempelai pria" src="" />
+              <div class="profileFade"></div>
+            </div>
+
+            <div class="profileBody">
+              <h3 id="groomName">[Nama Lengkap Pria]</h3>
+              <div class="meta" id="groomMeta">Putra dari ...</div>
+
+              <div class="actions">
+                <a
+                  class="btn primary igBtn"
+                  id="groomIg"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="Instagram groom"
+                >
+                  <span class="igIcon" aria-hidden="true"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="card profileCard">
+            <div class="profileMedia">
+              <img id="imgBride" alt="Foto mempelai pria" src="" />
+              <div class="profileFade"></div>
+            </div>
+
+            <div class="profileBody">
+              <h3 id="brideName">[Nama Lengkap Wanita]</h3>
+              <div class="meta" id="brideMeta">Putri dari ...</div>
+
+              <div class="actions">
+                <a
+                  class="btn primary igBtn"
+                  id="brideIg"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="Instagram bride"
+                >
+                  <span class="igIcon" aria-hidden="true"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Event Details + Countdown -->
+      <section class="section" id="event">
+        <div class="wrap">
+          <div class="rowhead">
+            <div>
+              <h2 style="margin: 0">Detail Acara</h2>
+              <div class="sub">
+                Countdown menuju hari bahagia + lokasi akad dan resepsi.
+              </div>
+            </div>
+            <span class="badge"
+              ><span class="dot"></span> Pastikan hadir tepat waktu ya</span
+            >
+          </div>
+
+          <div class="card">
+            <div class="pad">
+              <div class="pill">
+                <span class="dot"></span> MENUJU HARI BAHAGIA
+              </div>
+              <div
+                class="countdown"
+                id="countdown
+              "
+              >
+                <div class="timebox"><b id="cdDays">0</b><span>Hari</span></div>
+                <div class="timebox"><b id="cdHours">0</b><span>Jam</span></div>
+                <div class="timebox">
+                  <b id="cdMins">0</b><span>Menit</span>
+                </div>
+                <div class="timebox">
+                  <b id="cdSecs">0</b><span>Detik</span>
+                </div>
+              </div>
+              <p class="mini" id="cdNote" style="margin-top: 10px"></p>
+            </div>
+          </div>
+
+          <div class="grid" style="margin-top: 16px">
+            <div class="card event">
+              <div class="pad">
+                <div class="titleRow">
+                  <h3 style="margin: 0">Akad Nikah</h3>
+                  <span class="tag">AKAD</span>
+                </div>
+                <div class="lines" id="akadLines">
+                  🗓️ <b>[Hari, Tanggal]</b><br />
+                  ⏰ <b>[Jam]</b><br />
+                  📍 <b>[Nama Tempat]</b><br />
+                  📌 [Alamat lengkap]
+                </div>
+                <a
+                  class="btn primary btn-mini"
+                  id="akadMapBtn"
+                  target="_blank"
+                  rel="noopener"
+                  >Buka Google Maps</a
+                >
+              </div>
+            </div>
+
+            <div class="card event">
+              <div class="pad">
+                <div class="titleRow">
+                  <h3 style="margin: 0">Resepsi</h3>
+                  <span class="tag">RESEPSI</span>
+                </div>
+                <div class="lines" id="resepsiLines">
+                  🗓️ <b>[Hari, Tanggal]</b><br />
+                  ⏰ <b>[Jam]</b><br />
+                  📍 <b>[Nama Tempat]</b><br />
+                  📌 [Alamat lengkap]
+                </div>
+                <a
+                  class="btn primary btn-mini"
+                  id="resepsiMapBtn"
+                  target="_blank"
+                  rel="noopener"
+                  >Buka Google Maps</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Love Story -->
+      <section class="section" id="story">
+        <div class="wrap">
+          <div class="rowhead">
+            <div>
+              <h2 style="margin: 0">Love Story</h2>
+              <div class="sub">Three episodes, one forever.</div>
+            </div>
+            <span class="badge"
+              ><span class="dot"></span>Bismillah, Till Jannah</span
+            >
+          </div>
+
+          <div class="episodes">
+            <div class="card episode">
+              <div class="pad">
+                <div class="epno">Episode 01</div>
+                <h3>Awal Cerita</h3>
+                <p id="story1">
+                  Semua berawal dari perkenalan sederhana. Dari obrolan singkat,
+                  kami belajar saling mengenal, memahami, dan menemukan
+                  kenyamanan dalam kebersamaan.
+                </p>
+              </div>
+            </div>
+
+            <div class="card episode">
+              <div class="pad">
+                <div class="epno">Episode 02</div>
+                <h3>Lamaran</h3>
+                <p id="story2">
+                  Dengan restu keluarga, kami memantapkan langkah. Hari itu
+                  menjadi bukti bahwa yang tulus akan menemukan
+                  jalannya—perlahan, namun pasti.
+                </p>
+              </div>
+            </div>
+
+            <div class="card episode">
+              <div class="pad">
+                <div class="epno">Episode 03</div>
+                <h3>Pernikahan</h3>
+                <p id="story3">
+                  Kini kami memulai bab baru. Bukan tentang hidup yang selalu
+                  mudah, tetapi tentang berjalan bersama—dalam doa, dalam usaha,
+                  dan dalam komitmen saling menjaga.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Gallery Section -->
+      <section class="section" id="gallery">
+        <div class="wrap">
+          <div class="rowhead">
+            <div>
+              <h2>Gallery</h2>
+              <div class="sub">
+                Pilih scene favorit kamu dan lihat momen-momen indah di dalamnya
+              </div>
+            </div>
+            <span class="badge">
+              <span class="dot"></span> Senyum dan kebahagiaan dalam setiap
+              frame
+            </span>
+          </div>
+        </div>
+
+        <!-- Album Grid -->
+        <div class="gallery-grid" id="galleryGrid">
+          <!-- Inserted by JS -->
+        </div>
+      </section>
+
+      <!-- Wedding Gift -->
+      <section class="section" id="gift">
+        <div class="wrap">
+          <div class="rowhead">
+            <div>
+              <h2 style="margin: 0">Wedding Gift</h2>
+              <div class="sub">
+                Doa restu adalah hadiah terbaik. Jika berkenan, bisa kirim tanda
+                kasih.
+              </div>
+            </div>
+            <span class="badge"
+              ><span class="dot"></span> Ada tombol copy nomor</span
+            >
+          </div>
+
+          <div class="card">
+            <div class="pad">
+              <p>
+                Doa dan kehadiran Anda adalah hadiah paling berharga bagi kami.
+                Namun bila berkenan memberikan tanda kasih, silakan klik tombol
+                berikut.
+              </p>
+              <button class="btn primary" id="giftRevealBtn">
+                Klik di sini
+              </button>
+
+              <div class="reveal" id="giftReveal">
+                <div class="giftgrid" id="giftGrid">
+                  <!-- payment cards inserted by JS -->
+                </div>
+
+                <div class="card" style="margin-top: 14px">
+                  <div class="pad">
+                    <h3 style="margin: 0 0 6px">Kirim Kado</h3>
+                    <p id="giftAddress">[Alamat lengkap + penerima + no HP]</p>
+                  </div>
+                </div>
+
+                <div class="mini">
+                  <!-- *Data rekening dan alamat bisa kamu ubah di CONFIG. -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Wishes + RSVP -->
+      <section class="section" id="wishes">
+        <div class="wrap">
+          <div class="rowhead">
+            <div>
+              <h2 style="margin: 0">Ucapan</h2>
+              <div class="sub">
+                Tulis doa terbaikmu. Tip: double tap ucapan untuk memberi ❤️
+              </div>
+            </div>
+            <span class="badge"
+              ><span class="dot"></span> Instagram-style double tap</span
+            >
+          </div>
+
+          <div class="">
+            <!-- Wishes form -->
+            <div class="card">
+              <div class="pad">
+                <h3 style="margin: 0 0 6px">Kirim Ucapan</h3>
+                <p class="mini">
+                  <!-- Ucapan akan tersimpan di browser. Kalau mau online,
+                  perlu backend / database. -->
+                </p>
+                <form id="wishForm">
+                  <div class="fields">
+                    <div class="field" style="grid-column: span 12">
+                      <label for="wishName">Nama</label>
+                      <input id="wishName" placeholder="Nama kamu" required />
+                    </div>
+
+                    <div class="field" style="grid-column: span 12">
+                      <label for="wishEmoji">Pilih Emoticon</label>
+                      <div class="emoji-picker">
+                        <button type="button" class="emoji-btn" data-emoji="❤️">
+                          ❤️
+                        </button>
+                        <button type="button" class="emoji-btn" data-emoji="😍">
+                          😍
+                        </button>
+                        <button type="button" class="emoji-btn" data-emoji="🎉">
+                          🎉
+                        </button>
+                        <button type="button" class="emoji-btn" data-emoji="🌸">
+                          🌸
+                        </button>
+                        <button type="button" class="emoji-btn" data-emoji="💕">
+                          💕
+                        </button>
+                        <button type="button" class="emoji-btn" data-emoji="✨">
+                          ✨
+                        </button>
+                        <button type="button" class="emoji-btn" data-emoji="👰">
+                          👰
+                        </button>
+                        <button type="button" class="emoji-btn" data-emoji="🤵">
+                          🤵
+                        </button>
+                        <button type="button" class="emoji-btn" data-emoji="💒">
+                          💒
+                        </button>
+                        <button type="button" class="emoji-btn" data-emoji="🎊">
+                          🎊
+                        </button>
+                      </div>
+                      <span class="selected-emoji" id="selectedEmoji"></span>
+                    </div>
+
+                    <div class="field" style="grid-column: span 12">
+                      <label for="wishText">Ucapan / Doa</label>
+                      <textarea
+                        id="wishText"
+                        placeholder="Selamat menempuh hidup baru..."
+                        required
+                      ></textarea>
+                    </div>
+                  </div>
+
+                  <div class="formActions">
+                    <button class="btn primary" type="submit">
+                      Kirim Ucapan
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <!-- RSVP form -->
+            <!-- <div class="card" style="grid-column: span 6">
+              <div class="pad">
+                <h3 style="margin: 0 0 6px">Konfirmasi Kehadiran (RSVP)</h3>
+                <p class="mini">
+                  RSVP ini juga disimpan lokal. Buat kebutuhan real, biasanya
+                  dikirim ke Google Sheet / API.
+                </p>
+
+                <form id="rsvpForm">
+                  <div class="fields">
+                    <div class="field" style="grid-column: span 12">
+                      <label for="rsvpName">Nama</label>
+                      <input
+                        id="rsvpName"
+                        name="rsvpName"
+                        placeholder="Nama kamu"
+                        required
+                      />
+                    </div>
+
+                    <div class="field">
+                      <label for="rsvpStatus">Kehadiran</label>
+                      <select id="rsvpStatus" name="rsvpStatus" required>
+                        <option value="" selected disabled>Pilih</option>
+                        <option value="Hadir">Hadir</option>
+                        <option value="Tidak Hadir">Tidak Hadir</option>
+                        <option value="Masih Ragu">Masih Ragu</option>
+                      </select>
+                    </div>
+
+                    <div class="field">
+                      <label for="rsvpGuests">Jumlah Tamu</label>
+                      <select id="rsvpGuests" name="rsvpGuests">
+                        <option value="1" selected>1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="formActions">
+                    <button class="btn primary" type="submit">
+                      Kirim RSVP
+                    </button>
+                    <button class="btn" type="button" id="copyRsvpBtn">
+                      Copy RSVP Text
+                    </button>
+                  </div>
+
+                  <p class="mini" id="rsvpDeadline">
+                    *Mohon konfirmasi sebelum: [Tanggal batas RSVP]
+                  </p>
+                </form>
+              </div>
+            </div> -->
+          </div>
+
+          <div class="card" style="margin-top: 16px">
+            <div class="pad">
+              <h3 style="margin: 0 0 6px">Daftar Ucapan</h3>
+              <p class="mini">
+                Double tap pada kartu ucapan untuk menambah ❤️ like.
+              </p>
+              <div class="wishlist" id="wishList"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Closing -->
+      <section class="section" id="closing">
+        <div class="wrap">
+          <div class="rowhead">
+            <div>
+              <h2 style="margin: 0">Penutup</h2>
+              <div class="sub">See you on our big day ✨</div>
+            </div>
+            <span class="badge"><span class="dot"></span> Terima kasih</span>
+          </div>
+
+          <div class="closing">
+            <div class="card">
+              <div class="pad">
+                <h3 style="margin: 0 0 8px">Hai, Semuanya</h3>
+                <p id="closingText">
+                  Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila
+                  Bapak/Ibu/Saudara/i/Teman/Sahabat serta para kerabat berkenan
+                  hadir dan memberikan doa restu. Semoga Allah SWT memudahkan
+                  setiap langkah kita dan memberkahi pertemuan ini.
+                </p>
+                <p style="margin-top: 12px; color: rgba(255, 255, 255, 0.85)">
+                  Wassalamu’alaikum Warahmatullahi Wabarakatuh.
+                </p>
+                <div
+                  style="
+                    margin-top: 14px;
+                    display: flex;
+                    gap: 10px;
+                    flex-wrap: wrap;
+                  "
+                >
+                  <button class="btn primary" id="scrollTopBtn">
+                    Kembali ke Atas
+                  </button>
+                  <button class="btn" id="shareBtn">Share Link</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="pad">
+                <h3 style="margin: 0 0 10px">Love Story Continues</h3>
+                <div
+                  class="card"
+                  style="
+                    overflow: hidden;
+                    border-radius: 18px;
+                    border: 1px solid rgba(255, 255, 255, 0.08);
+                  "
+                >
+                  <div
+                    style="
+                      aspect-ratio: 16/9;
+                      background:
+                        radial-gradient(
+                          120px 80px at 30% 25%,
+                          rgba(255, 255, 255, 0.12),
+                          transparent 65%
+                        ),
+                        linear-gradient(
+                          135deg,
+                          rgba(229, 9, 20, 0.22),
+                          rgba(255, 255, 255, 0.05)
+                        );
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    "
+                  >
+                    <img
+                      id="imgClosing"
+                      alt="Foto penutup"
+                      src=""
+                      style="
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        display: none;
+                      "
+                    />
+                    <div
+                      id="closingPlaceholder"
+                      style="
+                        padding: 18px;
+                        color: rgba(255, 255, 255, 0.65);
+                        text-align: center;
+                      "
+                    >
+                      Upload / set foto penutup di CONFIG<br />
+                      <span class="mini"
+                        >Kalau belum ada, ini jadi placeholder.</span
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div style="margin-top: 12px; color: rgba(255, 255, 255, 0.82)">
+                  <i
+                    >Dengan cinta,<br />
+                    <span id="closingNames" style="font-weight: 800"
+                      >[Nama Pria] &amp; [Nama Wanita]</span
+                    >
+                  </i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Gallery Modal -->
+    <div class="modal" id="modal" role="dialog" aria-modal="true">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-title-group">
+            <div class="modal-title" id="modalTitle">Title</div>
+            <div class="modal-subtitle" id="modalSubtitle">Subtitle</div>
+          </div>
+          <div class="modal-progress" id="modalProgress">1/6</div>
+          <div class="modal-controls">
+            <button
+              class="modal-btn"
+              id="prevBtn"
+              title="Foto Sebelumnya"
+              aria-label="Previous"
+            >
+              ⟵
+            </button>
+            <button
+              class="modal-btn"
+              id="nextBtn"
+              title="Foto Berikutnya"
+              aria-label="Next"
+            >
+              ⟶
+            </button>
+            <button
+              class="modal-btn"
+              id="closeBtn"
+              title="Tutup"
+              aria-label="Close"
+            >
+              ✕
+            </button>
+          </div>
+        </div>
+        <div class="modal-body">
+          <div class="modal-image-container" id="modalImageContainer">
+            <img id="modalImg" alt="Gallery image" src="" />
+            <div class="modal-double-tap" id="modalDoubleTap"></div>
+          </div>
+          <div class="modal-sidebar">
+            <div class="modal-description" id="modalDesc">Description</div>
+            <div class="modal-hint">
+              <strong>💡 Tip:</strong> Ketuk/klik foto 2 kali untuk efek ❤️
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Background music -->
+    <audio id="bgm" preload="auto" loop>
+      <!-- Ganti src sesuai file kamu (mp3/ogg) -->
+      <source id="bgmSrc" src="" type="audio/mpeg" />
+    </audio>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script>
+      const SUPABASE_URL = "https://nvfqjhpsrxylfkbzdmsb.supabase.co";
+      const SUPABASE_ANON_KEY =
+        "sb_publishable_cxNC33E6luhfHkevlmpF5g_s_Dp5gzI";
+      const supabases = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+      /***********************
+       * CONFIG — EDIT HERE  *
+       ***********************/
+      const CONFIG = {
+        // Nama pasangan
+        groomShort: "Ardi",
+        brideShort: "Ria",
+        groomFull: "Muhamad Rizky Ardiansyah, S.Kom",
+        brideFull: "Ria Indah Nurbaiti, S.Ikom",
+
+        // Orang tua
+        groomParents:
+          "Putra Pertama dari <br> Bapak Muhamad Syahid & Ibu Marwiyah",
+        brideParents:
+          "Putri Pertama dari <br> Bapak Alm. Tri Yuniarto & Ibu Mayanah",
+
+        // Instagram (isi full url)
+        groomInstagram: "https://www.instagram.com/ardiansyah.mr10/",
+        brideInstagram: "https://www.instagram.com/riaindh_",
+
+        // Foto profil (optional) — kosongkan "" kalau belum ada
+        groomPhoto: "images/groom.JPG", // contoh: "img/groom.jpg"
+        bridePhoto: "images/bride.JPG", // contoh: "img/bride.jpg"
+
+        // Foto penutup (optional)
+        closingPhoto: "images/closing.jpg", // contoh: "img/closing.jpg"
+
+        // Tanggal acara (untuk cover + countdown
+        //  + gcal)
+        // Format: "YYYY-MM-DDTHH:mm:ss" (tanpa timezone) -> dipakai sebagai waktu lokal user.
+        // Kalau kamu pakai WIB, biasanya user juga WIB jadi aman.
+        weddingDateTime: "2026-08-09T08:00:00",
+
+        // Text tanggal yang tampil
+        weddingDateText: "Minggu, 9 Agustus 2026",
+
+        // Akad
+        akad: {
+          dateText: "Minggu, 9 Agustus 2026",
+          timeText: "08.00 – 10.00 WIB",
+          place: "Kediaman Mempelai Wanita",
+          address:
+            "Perum. Griya Persada Elok, Mustika Jaya, Mustika Jaya, Kota Bekasi, Jawa Barat 17157 (Dekat LAPANGAN VOLLY ELOK (ELGAR))",
+          mapsUrl: "https://maps.app.goo.gl/cFxazLR6X9Dc1H7K9", // ganti ke link maps kamu
+        },
+
+        // Resepsi
+        resepsi: {
+          dateText: "Minggu, 9 Agustus 2026",
+          timeText: "11.00 – 18.00 WIB",
+          place: "Kediaman Mempelai Wanita",
+          address:
+            "Perum. Griya Persada Elok, Mustika Jaya, Mustika Jaya, Kota Bekasi, Jawa Barat 17157 (Dekat LAPANGAN VOLLY ELOK (ELGAR))",
+          mapsUrl: "https://maps.app.goo.gl/cFxazLR6X9Dc1H7K9",
+        },
+
+        // Love story text
+        loveStory: {
+          ep1: "Semua berawal dari perkenalan sederhana. Dari obrolan singkat, kami belajar saling mengenal, memahami, dan menemukan kenyamanan dalam kebersamaan.",
+          ep2: "Dengan restu keluarga, kami memantapkan langkah. Hari itu menjadi bukti bahwa yang tulus akan menemukan jalannya—perlahan, namun pasti.",
+          ep3: "Kini kami memulai bab baru. Bukan tentang hidup yang selalu mudah, tetapi tentang berjalan bersama—dalam doa, dalam usaha, dan dalam komitmen saling menjaga.",
+        },
+
+        // Gallery items
+        gallery: [
+          {
+            title: "Cinta di Taman",
+            subtitle: "Harmony in Bloom",
+            desc: "Momen sederhana, rasa yang dalam—tenang, hangat, dan penuh syukur. Taman hijau menjadi saksi kebersamaan kami.",
+            tag: "SCENE 01",
+            img: "images/taman/taman-1.jpg",
+          },
+          {
+            title: "Cinta di Taman",
+            subtitle: "Harmony in Bloom",
+            desc: "Momen sederhana, rasa yang dalam—tenang, hangat, dan penuh syukur.",
+            tag: "SCENE 01",
+            img: "images/taman/taman-2.jpg",
+          },
+          {
+            title: "Cinta di Taman",
+            subtitle: "Harmony in Bloom",
+            desc: "Momen sederhana, rasa yang dalam—tenang, hangat, dan penuh syukur.",
+            tag: "SCENE 01",
+            img: "images/taman/taman-3.jpg",
+          },
+          {
+            title: "Cinta di Taman",
+            subtitle: "Harmony in Bloom",
+            desc: "Momen sederhana, rasa yang dalam—tenang, hangat, dan penuh syukur.",
+            tag: "SCENE 01",
+            img: "images/taman/taman-4.jpg",
+          },
+          {
+            title: "Cinta di Taman",
+            subtitle: "Harmony in Bloom",
+            desc: "Momen sederhana, rasa yang dalam—tenang, hangat, dan penuh syukur.",
+            tag: "SCENE 01",
+            img: "images/taman/taman-5.jpg",
+          },
+          {
+            title: "Cinta di Taman",
+            subtitle: "Harmony in Bloom",
+            desc: "Momen sederhana, rasa yang dalam—tenang, hangat, dan penuh syukur.",
+            tag: "SCENE 01",
+            img: "images/taman/taman-6.jpg",
+          },
+          {
+            title: "Lamaran",
+            subtitle: "The Promise",
+            desc: "Satu pertanyaan, satu jawaban—dan ribuan doa yang mengiringi. Momen ketika hati berkomitmen selamanya.",
+            tag: "SCENE 02",
+            img: "images/lamaran/lamaran-1.jpg",
+          },
+          {
+            title: "Lamaran",
+            subtitle: "The Promise",
+            desc: "Satu pertanyaan, satu jawaban—dan ribuan doa yang mengiringi.",
+            tag: "SCENE 02",
+            img: "images/lamaran/lamaran-2.jpg",
+          },
+          {
+            title: "Lamaran",
+            subtitle: "The Promise",
+            desc: "Satu pertanyaan, satu jawaban—dan ribuan doa yang mengiringi.",
+            tag: "SCENE 02",
+            img: "images/lamaran/lamaran-3.jpg",
+          },
+          {
+            title: "Lamaran",
+            subtitle: "The Promise",
+            desc: "Satu pertanyaan, satu jawaban—dan ribuan doa yang mengiringi.",
+            tag: "SCENE 02",
+            img: "images/lamaran/lamaran-4.jpg",
+          },
+          {
+            title: "Lamaran",
+            subtitle: "The Promise",
+            desc: "Satu pertanyaan, satu jawaban—dan ribuan doa yang mengiringi.",
+            tag: "SCENE 02",
+            img: "images/lamaran/lamaran-5.jpg",
+          },
+          {
+            title: "Lamaran",
+            subtitle: "The Promise",
+            desc: "Satu pertanyaan, satu jawaban—dan ribuan doa yang mengiringi.",
+            tag: "SCENE 02",
+            img: "images/lamaran/lamaran-6.jpg",
+          },
+          {
+            title: "Lamaran",
+            subtitle: "The Promise",
+            desc: "Satu pertanyaan, satu jawaban—dan ribuan doa yang mengiringi.",
+            tag: "SCENE 02",
+            img: "images/lamaran/lamaran-7.jpg",
+          },
+          {
+            title: "Lamaran",
+            subtitle: "The Promise",
+            desc: "Satu pertanyaan, satu jawaban—dan ribuan doa yang mengiringi.",
+            tag: "SCENE 02",
+            img: "images/lamaran/lamaran-8.jpg",
+          },
+          {
+            title: "Lamaran",
+            subtitle: "The Promise",
+            desc: "Satu pertanyaan, satu jawaban—dan ribuan doa yang mengiringi.",
+            tag: "SCENE 02",
+            img: "images/lamaran/lamaran-9.jpg",
+          },
+          {
+            title: "Lamaran",
+            subtitle: "The Promise",
+            desc: "Satu pertanyaan, satu jawaban—dan ribuan doa yang mengiringi.",
+            tag: "SCENE 02",
+            img: "images/lamaran/lamaran-10.jpg",
+          },
+          {
+            title: "Adat Betawi Merah",
+            subtitle: "Her Roots",
+            desc: "Merah yang berani, tradisi yang kuat—asal usul yang selalu dibanggakan. Warna cerah melambangkan semangat dan kegembiraan.",
+            tag: "SCENE 03",
+            img: "images/betawi/betawi-1.jpg",
+          },
+          {
+            title: "Adat Betawi Merah",
+            subtitle: "Her Roots",
+            desc: "Merah yang berani, tradisi yang kuat—asal usul yang selalu dibanggakan.",
+            tag: "SCENE 03",
+            img: "images/betawi/betawi-2.jpg",
+          },
+          {
+            title: "Adat Betawi Merah",
+            subtitle: "Her Roots",
+            desc: "Merah yang berani, tradisi yang kuat—asal usul yang selalu dibanggakan.",
+            tag: "SCENE 03",
+            img: "images/betawi/betawi-3.jpg",
+          },
+          {
+            title: "Adat Betawi Merah",
+            subtitle: "Her Roots",
+            desc: "Merah yang berani, tradisi yang kuat—asal usul yang selalu dibanggakan.",
+            tag: "SCENE 03",
+            img: "images/betawi/betawi-4.jpg",
+          },
+          {
+            title: "Adat Betawi Merah",
+            subtitle: "Her Roots",
+            desc: "Merah yang berani, tradisi yang kuat—asal usul yang selalu dibanggakan.",
+            tag: "SCENE 03",
+            img: "images/betawi/betawi-5.jpg",
+          },
+          {
+            title: "Adat Betawi Merah",
+            subtitle: "Her Roots",
+            desc: "Merah yang berani, tradisi yang kuat—asal usul yang selalu dibanggakan.",
+            tag: "SCENE 03",
+            img: "images/betawi/betawi-6.jpg",
+          },
+          {
+            title: "Adat Betawi Merah",
+            subtitle: "Her Roots",
+            desc: "Merah yang berani, tradisi yang kuat—asal usul yang selalu dibanggakan.",
+            tag: "SCENE 03",
+            img: "images/betawi/betawi-7.jpg",
+          },
+          {
+            title: "Adat Betawi Merah",
+            subtitle: "Her Roots",
+            desc: "Merah yang berani, tradisi yang kuat—asal usul yang selalu dibanggakan.",
+            tag: "SCENE 03",
+            img: "images/betawi/betawi-8.jpg",
+          },
+          {
+            title: "Adat Betawi Merah",
+            subtitle: "Her Roots",
+            desc: "Merah yang berani, tradisi yang kuat—asal usul yang selalu dibanggakan.",
+            tag: "SCENE 03",
+            img: "images/betawi/betawi-9.jpg",
+          },
+          {
+            title: "Adat Betawi Merah",
+            subtitle: "Her Roots",
+            desc: "Merah yang berani, tradisi yang kuat—asal usul yang selalu dibanggakan.",
+            tag: "SCENE 03",
+            img: "images/betawi/betawi-10.jpg",
+          },
+          {
+            title: "Adat Jawa Janggan Hitam",
+            subtitle: "His Roots",
+            desc: "Elegan, tegas, dan penuh makna—warisan yang dibawa menuju masa depan. Hitam yang dalam mewakili keseriusan dan kemuliaan.",
+            tag: "SCENE 04",
+            img: "images/jawa/jawa-1.jpg",
+          },
+          {
+            title: "Adat Jawa Janggan Hitam",
+            subtitle: "His Roots",
+            desc: "Elegan, tegas, dan penuh makna—warisan yang dibawa menuju masa depan.",
+            tag: "SCENE 04",
+            img: "images/jawa/jawa-2.jpg",
+          },
+          {
+            title: "Adat Jawa Janggan Hitam",
+            subtitle: "His Roots",
+            desc: "Elegan, tegas, dan penuh makna—warisan yang dibawa menuju masa depan.",
+            tag: "SCENE 04",
+            img: "images/jawa/jawa-3.jpg",
+          },
+          {
+            title: "Adat Jawa Janggan Hitam",
+            subtitle: "His Roots",
+            desc: "Elegan, tegas, dan penuh makna—warisan yang dibawa menuju masa depan.",
+            tag: "SCENE 04",
+            img: "images/jawa/jawa-4.jpg",
+          },
+          {
+            title: "Adat Jawa Janggan Hitam",
+            subtitle: "His Roots",
+            desc: "Elegan, tegas, dan penuh makna—warisan yang dibawa menuju masa depan.",
+            tag: "SCENE 04",
+            img: "images/jawa/jawa-5.jpg",
+          },
+          {
+            title: "Adat Jawa Janggan Hitam",
+            subtitle: "His Roots",
+            desc: "Elegan, tegas, dan penuh makna—warisan yang dibawa menuju masa depan.",
+            tag: "SCENE 04",
+            img: "images/jawa/jawa-6.jpg",
+          },
+          {
+            title: "Adat Jawa Janggan Hitam",
+            subtitle: "His Roots",
+            desc: "Elegan, tegas, dan penuh makna—warisan yang dibawa menuju masa depan.",
+            tag: "SCENE 04",
+            img: "images/jawa/jawa-7.jpg",
+          },
+          {
+            title: "Adat Jawa Janggan Hitam",
+            subtitle: "His Roots",
+            desc: "Elegan, tegas, dan penuh makna—warisan yang dibawa menuju masa depan.",
+            tag: "SCENE 04",
+            img: "images/jawa/jawa-8.jpg",
+          },
+          {
+            title: "Adat Jawa Janggan Hitam",
+            subtitle: "His Roots",
+            desc: "Elegan, tegas, dan penuh makna—warisan yang dibawa menuju masa depan.",
+            tag: "SCENE 04",
+            img: "images/jawa/jawa-9.jpg",
+          },
+          {
+            title: "Adat Jawa Janggan Hitam",
+            subtitle: "His Roots",
+            desc: "Elegan, tegas, dan penuh makna—warisan yang dibawa menuju masa depan.",
+            tag: "SCENE 04",
+            img: "images/jawa/jawa-10.jpg",
+          },
+        ],
+
+        // Wedding gift
+        gift: {
+          addressText:
+            "Griya Persada Elok, Mustika Jaya, Mustika Jaya, Kota Bekasi, Jawa Barat 17157 (Dekat LAPANGAN VOLLY ELOK (ELGAR))  — Penerima: Ria Indah (0895-3361-28466)",
+          accounts: [
+            {
+              logo: "BCA.png",
+              label: "BCA",
+              owner: "Muhamad Rizky Ardiansyah",
+              number: "1234567890",
+            },
+            {
+              logo: "BNI.png",
+              label: "BNI",
+              owner: "Muhamad Rizky Ardiansyah",
+              number: "0812xxxxxxx",
+            },
+          ],
+        },
+
+        // RSVP deadline text
+        rsvpDeadlineText: "*Mohon konfirmasi sebelum: [Tanggal batas RSVP]",
+
+        // Closing text
+        closingText:
+          "Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu. Semoga Allah SWT memudahkan setiap langkah kita dan memberkahi pertemuan ini.",
+
+        // Background music file (optional) — kosongkan jika tidak pakai
+        musicSrc: "music/music-instrument-wedding-ar.mp3", // contoh: "music/lagu.mp3"
+      };
+
+      /***********************
+       * Helpers
+       ***********************/
+      const $ = (sel, root = document) => root.querySelector(sel);
+
+      function showToast(text = "Copied!") {
+        const t = $("#toast");
+        t.textContent = text;
+        t.classList.remove("show");
+        void t.offsetWidth;
+        t.classList.add("show");
+      }
+
+      function pad2(n) {
+        return String(n).padStart(2, "0");
+      }
+
+      function getQueryParam(name) {
+        const u = new URL(window.location.href);
+        return u.searchParams.get(name);
+      }
+
+      function setQueryParam(name, value) {
+        const u = new URL(window.location.href);
+        if (value) u.searchParams.set(name, value);
+        else u.searchParams.delete(name);
+        history.replaceState(null, "", u.toString());
+      }
+
+      async function copyText(text) {
+        try {
+          await navigator.clipboard.writeText(text);
+          showToast("Copied!");
+        } catch {
+          // fallback
+          const ta = document.createElement("textarea");
+          ta.value = text;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand("copy");
+          ta.remove();
+          showToast("Copied!");
+        }
+      }
+
+      function escapeHtml(str) {
+        return str.replace(
+          /[&<>"']/g,
+          (m) =>
+            ({
+              "&": "&amp;",
+              "<": "&lt;",
+              ">": "&gt;",
+              '"': "&quot;",
+              "'": "&#39;",
+            })[m],
+        );
+      }
+
+      /***********************
+       * Apply CONFIG to UI
+       ***********************/
+      function applyConfig() {
+        const coupleShort = `${CONFIG.groomShort} & ${CONFIG.brideShort}`;
+        const coupleFull = `${CONFIG.groomFull} & ${CONFIG.brideFull}`;
+
+        $("#brandText").textContent = coupleShort;
+
+        $("#coverNames").innerHTML =
+          `${escapeHtml(CONFIG.groomShort)} &amp; ${escapeHtml(CONFIG.brideShort)}`;
+        $("#coverDate").textContent = CONFIG.weddingDateText;
+
+        $("#saveTitle").innerHTML =
+          `The Wedding of <br> ${escapeHtml(CONFIG.groomShort)} &amp; ${escapeHtml(CONFIG.brideShort)}`;
+        $("#saveDateText").textContent = CONFIG.weddingDateText;
+
+        $("#groomName").textContent = CONFIG.groomFull;
+        $("#brideName").textContent = CONFIG.brideFull;
+        $("#groomMeta").innerHTML = CONFIG.groomParents;
+        $("#brideMeta").innerHTML = CONFIG.brideParents;
+
+        $("#groomIg").href = CONFIG.groomInstagram || "#";
+        $("#brideIg").href = CONFIG.brideInstagram || "#";
+
+        // photos
+        const groomImg = $("#imgGroom");
+        const brideImg = $("#imgBride");
+        if (CONFIG.groomPhoto) {
+          groomImg.src = CONFIG.groomPhoto;
+          // $("#groomInitials").style.display = "none";
+        } else {
+          groomImg.style.display = "none";
+          // $("#groomInitials").style.display = "block";
+          // $("#groomInitials").textContent = (CONFIG.groomShort || "PR")
+          //   .slice(0, 2)
+          //   .toUpperCase();
+        }
+        if (CONFIG.bridePhoto) {
+          brideImg.src = CONFIG.bridePhoto;
+          // $("#brideInitials").style.display = "none";
+        } else {
+          brideImg.style.display = "none";
+          // $("#brideInitials").style.display = "block";
+          // $("#brideInitials").textContent = (CONFIG.brideShort || "WN")
+          //   .slice(0, 2)
+          //   .toUpperCase();
+        }
+
+        // event lines
+        $("#akadLines").innerHTML =
+          `🗓️ <b>${escapeHtml(CONFIG.akad.dateText)}</b><br/>
+         ⏰ <b>${escapeHtml(CONFIG.akad.timeText)}</b><br/>
+         📍 <b>${escapeHtml(CONFIG.akad.place)}</b><br/>
+         📌 ${escapeHtml(CONFIG.akad.address)}`;
+        $("#resepsiLines").innerHTML =
+          `🗓️ <b>${escapeHtml(CONFIG.resepsi.dateText)}</b><br/>
+         ⏰ <b>${escapeHtml(CONFIG.resepsi.timeText)}</b><br/>
+         📍 <b>${escapeHtml(CONFIG.resepsi.place)}</b><br/>
+         📌 ${escapeHtml(CONFIG.resepsi.address)}`;
+
+        $("#akadMapBtn").href = CONFIG.akad.mapsUrl;
+        $("#resepsiMapBtn").href = CONFIG.resepsi.mapsUrl;
+
+        // love story
+        $("#story1").textContent = CONFIG.loveStory.ep1;
+        $("#story2").textContent = CONFIG.loveStory.ep2;
+        $("#story3").textContent = CONFIG.loveStory.ep3;
+
+        // gift
+        $("#giftAddress").textContent = CONFIG.gift.addressText;
+
+        // // rsvp deadline
+        // $("#rsvpDeadline").textContent = CONFIG.rsvpDeadlineText;
+
+        // closing
+        $("#closingText").textContent = CONFIG.closingText;
+        $("#closingNames").textContent = coupleShort;
+
+        // closing photo
+        if (CONFIG.closingPhoto) {
+          $("#imgClosing").src = CONFIG.closingPhoto;
+          $("#imgClosing").style.display = "block";
+          $("#closingPlaceholder").style.display = "none";
+        }
+
+        // music
+        if (CONFIG.musicSrc) {
+          $("#bgmSrc").src = CONFIG.musicSrc;
+          $("#bgm").load();
+        }
+
+        // Build gallery + gift cards
+        buildGallery();
+        buildGiftCards();
+
+        // Google Calendar link
+        buildGCalLink();
+
+        // Cover guest name
+        const to = getQueryParam("to");
+        if (to) {
+          $("#guestName").textContent = to;
+        } else {
+          $("#guestName").textContent = "Tamu Undangan";
+        }
+      }
+
+      /***********************
+       * Google Calendar link
+       ***********************/
+      function toGCalDate(dt) {
+        // dt: Date -> YYYYMMDDTHHMMSS (no Z)
+        return `${dt.getFullYear()}${pad2(dt.getMonth() + 1)}${pad2(dt.getDate())}T${pad2(dt.getHours())}${pad2(dt.getMinutes())}${pad2(dt.getSeconds())}`;
+      }
+      function buildGCalLink() {
+        // Event duration guess: 2 hours from weddingDateTime
+        const start = new Date(CONFIG.weddingDateTime);
+        const end = new Date(start.getTime() + 2 * 60 * 60 * 1000);
+
+        const text = `The Wedding of ${CONFIG.groomShort} & ${CONFIG.brideShort}`;
+        const details = `Akad: ${CONFIG.akad.place} (${CONFIG.akad.timeText}) | Resepsi: ${CONFIG.resepsi.place} (${CONFIG.resepsi.timeText})`;
+        const location = `${CONFIG.akad.place}, ${CONFIG.akad.address}`;
+
+        // Google Calendar uses dates in UTC usually with Z; but we'll use local formatted + Z conversion:
+        // safer: convert to UTC and append Z format YYYYMMDDTHHMMSSZ
+        const startUtc = new Date(
+          start.getTime() - start.getTimezoneOffset() * 60 * 1000,
+        );
+        const endUtc = new Date(
+          end.getTime() - end.getTimezoneOffset() * 60 * 1000,
+        );
+
+        const s = toGCalDate(startUtc) + "Z";
+        const e = toGCalDate(endUtc) + "Z";
+
+        const url = new URL("https://calendar.google.com/calendar/render");
+        url.searchParams.set("action", "TEMPLATE");
+        url.searchParams.set("text", text);
+        url.searchParams.set("dates", `${s}/${e}`);
+        url.searchParams.set("details", details);
+        url.searchParams.set("location", location);
+
+        $("#gcalBtn").href = url.toString();
+      }
+
+      /***********************
+       * Countdown
+       ***********************/
+      function startCountdown() {
+        const target = new Date(CONFIG.weddingDateTime).getTime();
+        const note = $("#cdNote");
+
+        const tick = () => {
+          const now = Date.now();
+          let diff = target - now;
+
+          if (diff <= 0) {
+            $("#cdDays").textContent = "0";
+            $("#cdHours").textContent = "0";
+            $("#cdMins").textContent = "0";
+            $("#cdSecs").textContent = "0";
+            note.textContent = "Hari ini harinya! 🎉";
+            return;
+          }
+
+          const sec = Math.floor(diff / 1000);
+          const days = Math.floor(sec / 86400);
+          const hours = Math.floor((sec % 86400) / 3600);
+          const mins = Math.floor((sec % 3600) / 60);
+          const secs = sec % 60;
+
+          $("#cdDays").textContent = days;
+          $("#cdHours").textContent = hours;
+          $("#cdMins").textContent = mins;
+          $("#cdSecs").textContent = secs;
+
+          note.textContent = `Menuju ${CONFIG.weddingDateText} • ${CONFIG.groomShort} & ${CONFIG.brideShort}`;
+          requestAnimationFrame(() => {}); // keep UI snappy
+          setTimeout(tick, 1000);
+        };
+        tick();
+      }
+
+      /***********************
+       * Gallery
+       ***********************/
+      let modalIndex = 0;
+      let modalGroup = [];
+      let modalPos = 0;
+      let modalTag = "";
+
+      // Build gallery grid dengan 4 album preview
+      function buildGallery() {
+        const grid = document.getElementById("galleryGrid");
+        const albums = {};
+
+        // Group foto by tag
+        CONFIG.gallery.forEach((item, idx) => {
+          const tag = item.tag || "UNTAGGED";
+          if (!albums[tag]) {
+            albums[tag] = {
+              data: item,
+              photos: [],
+              firstIndex: idx,
+            };
+          }
+          albums[tag].photos.push(idx);
+        });
+
+        // Buat 4 album cards
+        Object.entries(albums).forEach(([tag, album]) => {
+          const card = document.createElement("div");
+          card.className = "album-card";
+          card.tabIndex = 0;
+          card.setAttribute("role", "button");
+          card.setAttribute("aria-label", `Open ${album.data.title} album`);
+
+          const imageDiv = document.createElement("div");
+          imageDiv.className = "album-image";
+
+          const img = document.createElement("img");
+          img.src = album.data.img;
+          img.alt = album.data.title;
+
+          imageDiv.appendChild(img);
+
+          const overlay = document.createElement("div");
+          overlay.className = "album-overlay";
+
+          imageDiv.appendChild(overlay);
+
+          const badge = document.createElement("div");
+          badge.className = "album-badge";
+          badge.textContent = tag;
+
+          imageDiv.appendChild(badge);
+
+          const count = document.createElement("div");
+          count.className = "album-count";
+          count.textContent = `${album.photos.length} foto`;
+
+          imageDiv.appendChild(count);
+
+          const info = document.createElement("div");
+          info.className = "album-info";
+          info.innerHTML = `
+                    <div class="album-title">${escapeHtml(album.data.title)}</div>
+                    <div class="album-subtitle">${escapeHtml(album.data.subtitle)}</div>
+                    <p class="album-desc">${escapeHtml(album.data.desc.substring(0, 80) + "...")}</p>
+                    <div class="album-arrow">Lihat Album → </div>
+                `;
+
+          card.appendChild(imageDiv);
+          card.appendChild(info);
+
+          card.addEventListener("click", () => openModal(album.firstIndex));
+          card.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              openModal(album.firstIndex);
+            }
+          });
+
+          grid.appendChild(card);
+        });
+      }
+
+      function openModal(idx) {
+        modalIndex = idx;
+        const g = CONFIG.gallery[idx];
+        modalTag = g.tag || "UNTAGGED";
+
+        // Buat group dari items dengan tag yang sama
+        modalGroup = CONFIG.gallery
+          .map((item, i) => ({ item, i }))
+          .filter((x) => (x.item.tag || "UNTAGGED") === modalTag)
+          .map((x) => x.i);
+
+        modalPos = Math.max(0, modalGroup.indexOf(idx));
+        renderModal(idx);
+
+        document.getElementById("modal").classList.add("show");
+        document.body.style.overflow = "hidden";
+      }
+
+      function renderModal(idx) {
+        const g = CONFIG.gallery[idx];
+
+        document.getElementById("modalTitle").textContent = g.title;
+        document.getElementById("modalSubtitle").textContent = g.subtitle;
+        document.getElementById("modalDesc").textContent = g.desc;
+        document.getElementById("modalImg").src = g.img;
+        document.getElementById("modalProgress").textContent =
+          `${modalPos + 1}/${modalGroup.length}`;
+      }
+
+      function closeModal() {
+        document.getElementById("modal").classList.remove("show");
+        document.body.style.overflow = "";
+      }
+
+      function modalPrev() {
+        if (!modalGroup.length) return;
+        modalPos = (modalPos - 1 + modalGroup.length) % modalGroup.length;
+        modalIndex = modalGroup[modalPos];
+        renderModal(modalIndex);
+      }
+
+      function modalNext() {
+        if (!modalGroup.length) return;
+        modalPos = (modalPos + 1) % modalGroup.length;
+        modalIndex = modalGroup[modalPos];
+        renderModal(modalIndex);
+      }
+
+      // Escape & Arrow keys
+      document.addEventListener("keydown", (e) => {
+        const modal = document.getElementById("modal");
+        if (!modal.classList.contains("show")) return;
+
+        if (e.key === "Escape") closeModal();
+        if (e.key === "ArrowLeft") modalPrev();
+        if (e.key === "ArrowRight") modalNext();
+      });
+
+      // Double tap untuk like
+      let lastTap = 0;
+      const imageContainer = document.getElementById("modalImageContainer");
+
+      imageContainer.addEventListener("click", (e) => {
+        const now = Date.now();
+        if (now - lastTap < 300) {
+          // Double tap detected
+          const rect = imageContainer.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+
+          const heart = document.createElement("div");
+          heart.className = "heart-float";
+          heart.textContent = "❤️";
+          heart.style.left = x + "px";
+          heart.style.top = y + "px";
+
+          document.getElementById("modalDoubleTap").appendChild(heart);
+
+          setTimeout(() => heart.remove(), 1000);
+        }
+        lastTap = now;
+      });
+
+      // Modal controls
+      document.getElementById("closeBtn").addEventListener("click", closeModal);
+      document.getElementById("prevBtn").addEventListener("click", modalPrev);
+      document.getElementById("nextBtn").addEventListener("click", modalNext);
+
+      // Click backdrop to close
+      document.getElementById("modal").addEventListener("click", (e) => {
+        if (e.target === document.getElementById("modal")) closeModal();
+      });
+
+      // Utility
+      function escapeHtml(text) {
+        const div = document.createElement("div");
+        div.textContent = text;
+        return div.innerHTML;
+      }
+
+      /***********************
+       * Gift cards
+       ***********************/
+      function buildGiftCards() {
+        const grid = $("#giftGrid");
+        grid.innerHTML = "";
+
+        CONFIG.gift.accounts.forEach((acc) => {
+          const card = document.createElement("div");
+          card.className = "card paycard";
+          card.innerHTML = `
+          <div class="pad">
+            <div class="row">
+              <div class="left">
+                <div class="banklogo"><img src="images/${acc.logo}"></div>
+                <div class="txt">
+                  <b>${escapeHtml(acc.label)}</b>
+                  <span>${escapeHtml(acc.number)} <br> a.n. ${escapeHtml(acc.owner)}</span>
+                </div>
+              </div>
+              <button class="btn primary btn-mini" type="button">Copy</button>
+            </div>
+          </div>
+        `;
+          const btn = card.querySelector("button");
+          btn.addEventListener("click", () => copyText(acc.number));
+          grid.appendChild(card);
+        });
+      }
+
+      /***********************
+       * Wishes + RSVP (localStorage)
+       ***********************/
+      const LS_WISHES = "wedding_wishes_v1";
+      const LS_RSVP = "wedding_rsvp_v1";
+
+      let selectedEmoji = "";
+
+      // Emoji selection
+      document.querySelectorAll(".emoji-btn").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+
+          // Remove previous selection
+          document
+            .querySelectorAll(".emoji-btn")
+            .forEach((b) => b.classList.remove("active"));
+
+          // Set new selection
+          btn.classList.add("active");
+          selectedEmoji = btn.dataset.emoji;
+          document.getElementById("selectedEmoji").textContent = selectedEmoji;
+        });
+      });
+
+      // Submit form
+      document
+        .getElementById("wishForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const name = document.getElementById("wishName").value.trim();
+          const text = document.getElementById("wishText").value.trim();
+
+          if (!name || !text) {
+            alert("Nama dan ucapan tidak boleh kosong");
+            return;
+          }
+
+          if (!selectedEmoji) {
+            alert("Pilih emoticon terlebih dahulu");
+            return;
+          }
+
+          try {
+            // Insert ke Supabase
+            const { data, error } = await supabases.from("wishes").insert([
+              {
+                name,
+                text,
+                emoji: selectedEmoji,
+                likes: 0,
+              },
+            ]);
+
+            if (error) throw error;
+
+            // Clear form
+            document.getElementById("wishForm").reset();
+            selectedEmoji = "";
+            document.getElementById("selectedEmoji").textContent = "";
+            document
+              .querySelectorAll(".emoji-btn")
+              .forEach((b) => b.classList.remove("active"));
+
+            // Reload wishes
+            loadWishes();
+
+            alert("Ucapan terkirim! Terima kasih 🙏");
+          } catch (error) {
+            console.error("Error:", error);
+            alert("Gagal mengirim ucapan. Coba lagi.");
+          }
+        });
+
+      // Load wishes dari database
+      async function loadWishes() {
+        try {
+          const { data, error } = await supabases
+            .from("wishes")
+            .select("*")
+            .order("created_at", { ascending: false });
+
+          if (error) throw error;
+
+          renderWishes(data || []);
+        } catch (error) {
+          console.error("Error loading wishes:", error);
+        }
+      }
+
+      // Render wishes
+      function renderWishes(wishes) {
+        const container = document.getElementById("wishList");
+        container.innerHTML = "";
+
+        console.log("Loaded wishes:", wishes.length);
+
+        if (wishes.length === 0) {
+          const empty = document.createElement("div");
+          empty.className = "mini";
+          empty.textContent = "Belum ada ucapan. Kamu yang pertama? 🙂";
+          container.appendChild(empty);
+          return;
+        } else {
+          wishes.forEach((w) => {
+            const card = document.createElement("div");
+            card.className = "wish";
+            card.dataset.id = w.id;
+
+            const date = new Date(w.created_at).toLocaleDateString("id-ID", {
+              year: "numeric",
+              month: "2-digit",
+              day: "2-digit",
+              hour: "2-digit",
+              minute: "2-digit",
+            });
+
+            card.innerHTML = `
+        <div class="head">
+          <b>${escapeHtml(w.name)}</b>
+          <span>${date}</span>
+        </div>
+        <p><span class="emoji">${w.emoji || "📝"}</span> ${escapeHtml(w.text)}</p>
+        <div class="likes">
+          <span class="heart">❤️</span>
+          <span class="like-count">${w.likes || 0}</span>
+        </div>
+      `;
+
+            // Double tap untuk like
+            attachDoubleTap(card, () => {
+              addLike(w.id);
+              heartBurst(card);
+            });
+
+            container.appendChild(card);
+          });
+        }
+      }
+
+      // Add like
+      async function addLike(id) {
+        try {
+          const { data: wish } = await supabases
+            .from("wishes")
+            .select("likes")
+            .eq("id", id)
+            .single();
+
+          const newLikes = (wish.likes || 0) + 1;
+
+          const { error } = await supabases
+            .from("wishes")
+            .update({ likes: newLikes })
+            .eq("id", id);
+
+          if (error) throw error;
+
+          // Update UI tanpa reload full
+          const card = document.querySelector(`[data-id="${id}"]`);
+          if (card) {
+            const likeCount = card.querySelector(".like-count");
+            likeCount.textContent = newLikes;
+          }
+        } catch (error) {
+          console.error("Error adding like:", error);
+        }
+      }
+
+      // Utility
+      function escapeHtml(text) {
+        const div = document.createElement("div");
+        div.textContent = text;
+        return div.innerHTML;
+      }
+
+      function heartBurst(el) {
+        const burst = document.createElement("div");
+        burst.className = "burst";
+        burst.innerHTML = `
+    <svg width="120" height="120" viewBox="0 0 24 24" fill="var(--accent)" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 21s-7.2-4.6-9.6-8.5C.7 9.8 2 6.6 5.2 5.7c1.8-.5 3.7.2 4.8 1.6 1.1-1.4 3-2.1 4.8-1.6 3.2.9 4.5 4.1 2.8 6.8C19.2 16.4 12 21 12 21z"/>
+    </svg>
+  `;
+        el.appendChild(burst);
+        setTimeout(() => burst.remove(), 700);
+      }
+
+      function attachDoubleTap(el, onDouble) {
+        let last = 0;
+        const threshold = 290;
+        el.addEventListener("click", (e) => {
+          const now = Date.now();
+          if (now - last < threshold) {
+            onDouble();
+            last = 0;
+          } else {
+            last = now;
+          }
+        });
+      }
+
+      // Load wishes on page load
+      loadWishes();
+
+      // Optional: Real-time updates dengan Supabase
+      supabases
+        .channel("public:wishes")
+        .on(
+          "postgres_changes",
+          { event: "*", schema: "public", table: "wishes" },
+          (payload) => {
+            loadWishes();
+          },
+        )
+        .subscribe();
+
+      // Simple rate limiting per IP (client-side)
+      const LAST_WISH_TIME = "last_wish_time";
+      const MIN_INTERVAL = 60000; // 1 menit
+
+      async function submitWish(name, text, emoji) {
+        const lastTime = parseInt(localStorage.getItem(LAST_WISH_TIME) || "0");
+        const now = Date.now();
+
+        if (now - lastTime < MIN_INTERVAL) {
+          const secondsLeft = Math.ceil(
+            (MIN_INTERVAL - (now - lastTime)) / 1000,
+          );
+          alert(`Tunggu ${secondsLeft} detik sebelum kirim ucapan lagi`);
+          return;
+        }
+
+        // ... insert to database ...
+
+        localStorage.setItem(LAST_WISH_TIME, String(now));
+      }
+
+      function saveRsvp(data) {
+        localStorage.setItem(LS_RSVP, JSON.stringify(data));
+      }
+      function loadRsvp() {
+        try {
+          return JSON.parse(localStorage.getItem(LS_RSVP) || "null");
+        } catch {
+          return null;
+        }
+      }
+
+      /***********************
+       * Music
+       ***********************/
+      let musicOn = false;
+
+      async function startMusic() {
+        if (!CONFIG.musicSrc) return;
+        const audio = $("#bgm");
+        try {
+          await audio.play();
+          musicOn = true;
+          $("#musicBtn").textContent = "🔊 On";
+        } catch {
+          musicOn = false;
+          $("#musicBtn").textContent = "🔈 Tap to Play";
+        }
+      }
+
+      function toggleMusic() {
+        if (!CONFIG.musicSrc) {
+          showToast("Music src kosong (set di CONFIG).");
+          return;
+        }
+        const audio = $("#bgm");
+        if (musicOn) {
+          audio.pause();
+          musicOn = false;
+          $("#musicBtn").textContent = "🔈 Off";
+        } else {
+          audio
+            .play()
+            .then(() => {
+              musicOn = true;
+              $("#musicBtn").textContent = "🔊 On";
+            })
+            .catch(() => {
+              musicOn = false;
+              $("#musicBtn").textContent = "🔈 Tap to Play";
+            });
+        }
+      }
+
+      /***********************
+       * Opening flow
+       ***********************/
+      function openInvitation() {
+        // show transition then hide overlay
+        $("#transition").classList.add("show");
+        setTimeout(() => {
+          $("#transition").classList.remove("show");
+          $("#overlay").classList.add("hidden");
+          $("#fab").classList.add("show");
+
+          // smooth scroll to first section
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          // attempt music start (allowed because it follows user click)
+          startMusic();
+        }, 900);
+      }
+
+      function initHeroVideo() {
+        const v = document.getElementById("teaserVideo");
+        const media = document.getElementById("heroMedia");
+        const toggle = document.getElementById("videoToggleBtn");
+        const mute = document.getElementById("muteToggleBtn");
+
+        if (!v) return;
+
+        // Autoplay attempt (muted) — biasanya aman
+        const tryPlay = () => v.play().catch(() => {});
+
+        // Pause kalau user scroll jauh (lebih rapi & hemat)
+        const io = new IntersectionObserver(
+          (entries) => {
+            const entry = entries[0];
+            if (entry.isIntersecting) tryPlay();
+            else v.pause();
+          },
+          { threshold: 0.25 },
+        );
+
+        io.observe(media);
+
+        const syncButtons = () => {
+          toggle.textContent = v.paused ? "▶" : "⏸";
+          mute.textContent = v.muted ? "🔇" : "🔊";
+        };
+
+        toggle.addEventListener("click", () => {
+          if (v.paused) v.play().catch(() => {});
+          else v.pause();
+          syncButtons();
+        });
+
+        mute.addEventListener("click", () => {
+          v.muted = !v.muted;
+          // kalau unmute, kadang perlu play ulang
+          if (!v.paused) v.play().catch(() => {});
+          syncButtons();
+        });
+
+        // Klik video area = play/pause
+        media.addEventListener("click", (e) => {
+          // biar klik tombol gak ikut memicu
+          if (e.target.closest("button,a")) return;
+          if (v.paused) v.play().catch(() => {});
+          else v.pause();
+          syncButtons();
+        });
+
+        // init state
+        v.muted = true;
+        tryPlay();
+        syncButtons();
+      }
+
+      /***********************
+       * Share / Copy link
+       ***********************/
+      function getInviteLink() {
+        return (
+          window.location.origin +
+          window.location.pathname +
+          window.location.search
+        );
+      }
+
+      async function shareLink() {
+        const url = getInviteLink();
+        const title = `Undangan Pernikahan ${CONFIG.groomShort} & ${CONFIG.brideShort}`;
+        const text = `Undangan Pernikahan ${CONFIG.groomShort} & ${CONFIG.brideShort} — ${CONFIG.weddingDateText}\n${url}`;
+
+        if (navigator.share) {
+          try {
+            await navigator.share({ title, text, url });
+          } catch {}
+        } else {
+          await copyText(url);
+          showToast("Link copied!");
+        }
+      }
+
+      /***********************
+       * Init + Events
+       ***********************/
+      function init() {
+        applyConfig();
+        startCountdown();
+        initHeroVideo();
+
+        // set guest name from ?to=
+        const to = getQueryParam("to");
+        if (to) $("#guestName").textContent = to;
+
+        $("#openBtn").addEventListener("click", openInvitation);
+
+        //$("#guestBtn").addEventListener("click", () => {
+        //  const name = prompt(
+        //    "Masukkan nama tamu (akan jadi ?to=...):",
+        //    getQueryParam("to") || "",
+        //  );
+        //  if (name !== null) {
+        //    setQueryParam("to", name.trim());
+        //    $("#guestName").textContent = name.trim() || "Tamu Undangan";
+        //    showToast("Nama tamu di-set ✅");
+        //  }
+        //});
+
+        $("#musicBtn").addEventListener("click", toggleMusic);
+
+        // $("#copyLinkBtn").addEventListener("click", () =>
+        //   copyText(getInviteLink()),
+        // );
+
+        $("#giftRevealBtn").addEventListener("click", () => {
+          $("#giftReveal").classList.toggle("show");
+          $("#giftRevealBtn").textContent = $("#giftReveal").classList.contains(
+            "show",
+          )
+            ? "Tutup"
+            : "Klik di sini";
+        });
+
+        // modal controls
+        $("#closeBtn").addEventListener("click", closeModal);
+        $("#prevBtn").addEventListener("click", modalPrev);
+        $("#nextBtn").addEventListener("click", modalNext);
+
+        // close modal on backdrop click
+        $("#modal").addEventListener("click", (e) => {
+          if (e.target.id === "modal") closeModal();
+        });
+        // esc key
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape" && $("#modal").classList.contains("show"))
+            closeModal();
+          if (e.key === "ArrowLeft" && $("#modal").classList.contains("show"))
+            modalPrev();
+          if (e.key === "ArrowRight" && $("#modal").classList.contains("show"))
+            modalNext();
+        });
+
+        // modal "double tap like" on image or button
+        attachDoubleTap($("#modalImg"), () => {
+          showToast("❤️ Liked!");
+        });
+
+        // wishes form submit
+        $("#wishForm").addEventListener("submit", (e) => {
+          e.preventDefault();
+          const name = $("#wishName").value.trim();
+          const text = $("#wishText").value.trim();
+          if (!name || !text) return;
+          addWish(name, text);
+          $("#wishText").value = "";
+          showToast("Ucapan terkirim (local) ✅");
+        });
+
+        $("#clearWishesBtn").addEventListener("click", () => {
+          if (confirm("Hapus semua ucapan di device ini? (local)")) {
+            localStorage.removeItem(LS_WISHES);
+            renderWishes();
+            showToast("Cleared ✅");
+          }
+        });
+
+        // RSVP form
+        // $("#rsvpForm").addEventListener("submit", (e) => {
+        //   e.preventDefault();
+        //   const data = {
+        //     name: $("#rsvpName").value.trim(),
+        //     status: $("#rsvpStatus").value,
+        //     guests: $("#rsvpGuests").value,
+        //     time: new Date().toISOString(),
+        //   };
+        //   if (!data.name || !data.status) return;
+        //   saveRsvp(data);
+        //   showToast("RSVP tersimpan (local) ✅");
+        // });
+
+        // $("#copyRsvpBtn").addEventListener("click", async () => {
+        //   const data = loadRsvp();
+        //   const text = data
+        //     ? `RSVP — ${CONFIG.groomShort} & ${CONFIG.brideShort}\nNama: ${data.name}\nKehadiran: ${data.status}\nJumlah tamu: ${data.guests}\nTanggal: ${CONFIG.weddingDateText}`
+        //     : `RSVP — ${CONFIG.groomShort} & ${CONFIG.brideShort}\nNama: [isi]\nKehadiran: [Hadir/Tidak/Masih Ragu]\nJumlah tamu: [1/2]\nTanggal: ${CONFIG.weddingDateText}`;
+        //   await copyText(text);
+        //   showToast("RSVP text copied ✅");
+        // });
+
+        // scroll top + share
+        $("#scrollTopBtn").addEventListener("click", () =>
+          window.scrollTo({ top: 0, behavior: "smooth" }),
+        );
+        $("#shareBtn").addEventListener("click", shareLink);
+
+        // also allow opening by clicking outside? (No, keep explicit)
+      }
+
+      init();
+    </script>
+  </body>
+</html>
