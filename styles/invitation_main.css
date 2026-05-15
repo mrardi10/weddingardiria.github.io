@@ -250,7 +250,7 @@ body {
   border-radius: 3px;
 }
 .navlinks {
-  display: flex;
+  display: none;
   gap: 12px;
   flex-wrap: wrap;
   align-items: center;
@@ -513,15 +513,15 @@ body {
 /* ===== Hero Banner (Video Teaser) ===== */
 .heroBanner {
   display: grid;
-  grid-template-columns: 1.25fr 0.75fr;
-  gap: 16px;
+  /* grid-template-columns: 1.25fr 0.75fr;
+  gap: 16px; */
   overflow: hidden;
   border-radius: var(--radius2);
 }
 
 @media (min-width: 981px) {
   .heroBanner {
-    height: 75vh;
+    height: 120vh;
   }
 }
 
@@ -592,7 +592,7 @@ body {
 .heroTitle {
   font-family: "Netflix Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 900;
-  font-size: clamp(28px, 4.4vw, 54px);
+  font-size: clamp(28px, 4.4vw, 50px);
   line-height: 1.05;
   letter-spacing: 0.2px;
   margin: 8px 0 10px;
@@ -712,7 +712,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    height: 65vh;
+    height: 80vh
   }
 
   .heroTop,
@@ -1850,5 +1850,9 @@ select:focus {
 
   .emoji-btn{
     padding: 5px;
+  }
+
+  .rowhead .sub{
+    font-size: 0.85rem;
   }
 }

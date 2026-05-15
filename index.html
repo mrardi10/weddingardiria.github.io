@@ -111,7 +111,7 @@
                 loop
                 preload="metadata"
               >
-                <source src="videos/opening.mp4" />
+                <source src="videos/teaser-alaala.mp4" />
                 Browser kamu tidak mendukung video.
               </video>
 
@@ -160,14 +160,7 @@
                   >
                     ⏸ Pause
                   </button>
-                  <button
-                    class="btn ghost"
-                    id="muteToggleBtn"
-                    type="button"
-                    aria-label="Mute/Unmute video"
-                  >
-                    🔇 Muted
-                  </button>
+
                 </div>
 
                 <div class="mini heroHint">
@@ -179,12 +172,6 @@
             <!-- SIDE CARD (Opening note + verse) -->
             <div class="heroSide">
               <div class="pad">
-                <!-- judul English, tapi bukan “Salam Pembuka” -->
-                <div class="sideHead">
-                  <span class="pill"
-                    ><span class="dot"></span> OPENING NOTE</span
-                  >
-                </div>
 
                 <p style="margin-top: 12px">
                   <i> Assalamu’alaikum Warahmatullahi Wabarakatuh. </i>
@@ -216,9 +203,6 @@
               <h2 style="margin: 0">Guiding Verse</h2>
               <div class="sub">A reminder of why we begin.</div>
             </div>
-            <span class="badge"
-              ><span class="dot"></span> QS. Ar-Rum [30]: 21</span
-            >
           </div>
 
           <div class="card">
@@ -327,7 +311,7 @@
           <div class="card">
             <div class="pad">
               <div class="pill">
-                <span class="dot"></span> MENUJU HARI BAHAGIA
+                MENUJU HARI BAHAGIA
               </div>
               <div
                 class="countdown"
@@ -404,7 +388,7 @@
               <div class="sub">Three episodes, one forever.</div>
             </div>
             <span class="badge"
-              ><span class="dot"></span>Bismillah, Till Jannah</span
+              ><span class="dot"></span>Bismillahirrahmanirrahim</span
             >
           </div>
 
@@ -479,7 +463,7 @@
               <h2 style="margin: 0">Wedding Gift</h2>
               <div class="sub">
                 Doa restu adalah hadiah terbaik. Jika berkenan, bisa kirim tanda
-                kasih.
+                kasih ya
               </div>
             </div>
             <span class="badge"
@@ -526,11 +510,11 @@
             <div>
               <h2 style="margin: 0">Ucapan</h2>
               <div class="sub">
-                Tulis doa terbaikmu. Tip: double tap ucapan untuk memberi ❤️
+                Kamu bisa tulis ucapan dan doa untuk kami di sini.
               </div>
             </div>
             <span class="badge"
-              ><span class="dot"></span> Instagram-style double tap</span
+              ><span class="dot"></span> Pilih emoticon favorit untuk ucapanmu</span
             >
           </div>
 
@@ -1975,7 +1959,7 @@
         const v = document.getElementById("teaserVideo");
         const media = document.getElementById("heroMedia");
         const toggle = document.getElementById("videoToggleBtn");
-        const mute = document.getElementById("muteToggleBtn");
+        
 
         if (!v) return;
 
@@ -1996,7 +1980,6 @@
 
         const syncButtons = () => {
           toggle.textContent = v.paused ? "▶" : "⏸";
-          mute.textContent = v.muted ? "🔇" : "🔊";
         };
 
         toggle.addEventListener("click", () => {
@@ -2005,12 +1988,6 @@
           syncButtons();
         });
 
-        mute.addEventListener("click", () => {
-          v.muted = !v.muted;
-          // kalau unmute, kadang perlu play ulang
-          if (!v.paused) v.play().catch(() => {});
-          syncButtons();
-        });
 
         // Klik video area = play/pause
         media.addEventListener("click", (e) => {
@@ -2127,14 +2104,6 @@
           addWish(name, text);
           $("#wishText").value = "";
           showToast("Ucapan terkirim (local) ✅");
-        });
-
-        $("#clearWishesBtn").addEventListener("click", () => {
-          if (confirm("Hapus semua ucapan di device ini? (local)")) {
-            localStorage.removeItem(LS_WISHES);
-            renderWishes();
-            showToast("Cleared ✅");
-          }
         });
 
         // RSVP form
