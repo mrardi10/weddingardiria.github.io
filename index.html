@@ -37,37 +37,25 @@
 
     <!-- Cover / Opening Overlay -->
     <div class="overlay" id="overlay">
-      <div
-        class="cover"
-        role="dialog"
-        aria-modal="true"
-        aria-label="Cover undangan"
-      >
-        <div class="content">
-          <div class="smallcaps">THE WEDDING OF</div>
-          <div class="nx-title" id="coverNames">
-            [Nama Pria] &amp; [Nama Wanita]
-          </div>
-          <div class="date" id="coverDate">[Hari, Tanggal Bulan Tahun]</div>
-
-          <div class="dear">Dear, <b id="guestName">Tamu Undangan</b></div>
-          <div class="desc" id="coverDesc">
-            Dengan segala hormat, kami mengundang
-            Bapak/Ibu/Saudara/i/Teman/Sahabat serta para kerabat untuk hadir dan
-            memberikan doa restu pada hari bahagia kami.
-          </div>
-
-          <div class="actions">
-            <button class="btn primary" id="openBtn">Buka Undangan</button>
-            <!-- <button class="btn ghost" id="guestBtn" title="Ubah nama tamu di URL">Set Nama Tamu</button> -->
-          </div>
+      <div class="netflix-profile-container" role="dialog" aria-modal="true" aria-label="Netflix Profile Selector">
+        <h1 class="netflix-title">Siapa yang akan menyaksikan cerita kami?</h1>
+        
+        <div class="netflix-profiles">
+          <!-- Tombol ini berfungsi sebagai pengganti openBtn -->
+          <button class="netflix-profile-card" id="openBtn" type="button">
+            <div class="avatar-wrapper">
+              <img src="" id="netflixAvatar" alt="Profile Avatar" />
+              <div class="avatar-overlay-hover">
+                <i class="fa-solid fa-play"></i>
+              </div>
+            </div>
+            <span class="profile-name" id="guestName">Tamu Undangan</span>
+          </button>
         </div>
-        <div class="divider"></div>
-        <div class="content" style="padding-top: 18px">
-          <span class="badge"
-            ><span class="dot"></span> Scroll untuk melihat detail setelah
-            undangan dibuka</span
-          >
+
+        <div class="netflix-footer-note">
+          <p class="wedding-text-hint">[Nama Pria] &amp; [Nama Wanita]</p>
+          <p class="wedding-date-hint" id="coverDate">[Hari, Tanggal Bulan Tahun]</p>
         </div>
       </div>
     </div>
@@ -111,7 +99,7 @@
                 loop
                 preload="metadata"
               >
-                <source src="videos/teaser-alaala.mp4" />
+                <source src="videos/teaser.mp4" />
                 Browser kamu tidak mendukung video.
               </video>
 
@@ -147,9 +135,6 @@
                     rel="noopener"
                     >Save to Google Calendar</a
                   >
-                  <!-- <button class="btn" id="copyLinkBtn" type="button">
-                    Copy Link
-                  </button> -->
 
                   <!-- kontrol video -->
                   <button
@@ -238,10 +223,6 @@
               <h2 style="margin: 0">Perkenalan Mempelai</h2>
               <div class="sub">Dua pemeran utama, satu cerita selamanya.</div>
             </div>
-            <!-- <span class="badge">
-              <span class="dot"></span> Tap tombol Instagram untuk cek
-              profil
-            </span> -->
           </div>
 
           <div class="card profileCard">
@@ -423,7 +404,7 @@
                 <h3>Pernikahan</h3>
                 <p id="story3">
                   Kini kami memulai bab baru. Bukan tentang hidup yang selalu
-                  mudah, tetapi tentang berjalan bersama—dalam doa, dalam usaha,
+                  mudah, tetapi tentang berjalan bersama dalam doa, dalam usaha,
                   dan dalam komitmen saling menjaga.
                 </p>
               </div>
@@ -590,63 +571,7 @@
               </div>
             </div>
 
-            <!-- RSVP form -->
-            <!-- <div class="card" style="grid-column: span 6">
-              <div class="pad">
-                <h3 style="margin: 0 0 6px">Konfirmasi Kehadiran (RSVP)</h3>
-                <p class="mini">
-                  RSVP ini juga disimpan lokal. Buat kebutuhan real, biasanya
-                  dikirim ke Google Sheet / API.
-                </p>
-
-                <form id="rsvpForm">
-                  <div class="fields">
-                    <div class="field" style="grid-column: span 12">
-                      <label for="rsvpName">Nama</label>
-                      <input
-                        id="rsvpName"
-                        name="rsvpName"
-                        placeholder="Nama kamu"
-                        required
-                      />
-                    </div>
-
-                    <div class="field">
-                      <label for="rsvpStatus">Kehadiran</label>
-                      <select id="rsvpStatus" name="rsvpStatus" required>
-                        <option value="" selected disabled>Pilih</option>
-                        <option value="Hadir">Hadir</option>
-                        <option value="Tidak Hadir">Tidak Hadir</option>
-                        <option value="Masih Ragu">Masih Ragu</option>
-                      </select>
-                    </div>
-
-                    <div class="field">
-                      <label for="rsvpGuests">Jumlah Tamu</label>
-                      <select id="rsvpGuests" name="rsvpGuests">
-                        <option value="1" selected>1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div class="formActions">
-                    <button class="btn primary" type="submit">
-                      Kirim RSVP
-                    </button>
-                    <button class="btn" type="button" id="copyRsvpBtn">
-                      Copy RSVP Text
-                    </button>
-                  </div>
-
-                  <p class="mini" id="rsvpDeadline">
-                    *Mohon konfirmasi sebelum: [Tanggal batas RSVP]
-                  </p>
-                </form>
-              </div>
-            </div> -->
+            
           </div>
 
           <div class="card" style="margin-top: 16px">
@@ -816,9 +741,6 @@
           </div>
           <div class="modal-sidebar">
             <div class="modal-description" id="modalDesc">Description</div>
-            <div class="modal-hint">
-              <strong>💡 Tip:</strong> Ketuk/klik foto 2 kali untuk efek ❤️
-            </div>
           </div>
         </div>
       </div>
@@ -830,8 +752,11 @@
       <source id="bgmSrc" src="" type="audio/mpeg" />
     </audio>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
     <script>
       const SUPABASE_URL = "https://nvfqjhpsrxylfkbzdmsb.supabase.co";
       const SUPABASE_ANON_KEY =
@@ -842,11 +767,19 @@
        * CONFIG — EDIT HERE  *
        ***********************/
       const CONFIG = {
+
+        netflixAvatars: [
+          "images/avatar/red.png",
+          "images/avatar/green.png",
+          "images/avatar/blue.jpg",
+          "images/avatar/yellow.jpg"
+        ],
+
         // Nama pasangan
         groomShort: "Ardi",
         brideShort: "Ria",
         groomFull: "Muhamad Rizky Ardiansyah, S.Kom",
-        brideFull: "Ria Indah Nurbaiti, S.Ikom",
+        brideFull: "Ria Indah Nurbaiti",
 
         // Orang tua
         groomParents:
@@ -906,255 +839,305 @@
           {
             title: "Cinta di Taman",
             subtitle: "Harmony in Bloom",
-            desc: "Momen sederhana, rasa yang dalam—tenang, hangat, dan penuh syukur. Taman hijau menjadi saksi kebersamaan kami.",
+            desc: "Momen sederhana, rasa yang dalam, tenang, hangat, dan penuh syukur. Taman hijau menjadi saksi kebersamaan kami.",
             tag: "SCENE 01",
             img: "images/taman/taman-1.jpg",
           },
           {
             title: "Cinta di Taman",
             subtitle: "Harmony in Bloom",
-            desc: "Momen sederhana, rasa yang dalam—tenang, hangat, dan penuh syukur.",
+            desc: "Momen sederhana, rasa yang dalam, tenang, hangat, dan penuh syukur.",
             tag: "SCENE 01",
             img: "images/taman/taman-2.jpg",
           },
           {
             title: "Cinta di Taman",
             subtitle: "Harmony in Bloom",
-            desc: "Momen sederhana, rasa yang dalam—tenang, hangat, dan penuh syukur.",
+            desc: "Momen sederhana, rasa yang dalam, tenang, hangat, dan penuh syukur.",
             tag: "SCENE 01",
             img: "images/taman/taman-3.jpg",
           },
           {
             title: "Cinta di Taman",
             subtitle: "Harmony in Bloom",
-            desc: "Momen sederhana, rasa yang dalam—tenang, hangat, dan penuh syukur.",
+            desc: "Momen sederhana, rasa yang dalam, tenang, hangat, dan penuh syukur.",
             tag: "SCENE 01",
             img: "images/taman/taman-4.jpg",
           },
           {
             title: "Cinta di Taman",
             subtitle: "Harmony in Bloom",
-            desc: "Momen sederhana, rasa yang dalam—tenang, hangat, dan penuh syukur.",
+            desc: "Momen sederhana, rasa yang dalam, tenang, hangat, dan penuh syukur.",
             tag: "SCENE 01",
             img: "images/taman/taman-5.jpg",
           },
           {
             title: "Cinta di Taman",
             subtitle: "Harmony in Bloom",
-            desc: "Momen sederhana, rasa yang dalam—tenang, hangat, dan penuh syukur.",
+            desc: "Momen sederhana, rasa yang dalam, tenang, hangat, dan penuh syukur.",
             tag: "SCENE 01",
             img: "images/taman/taman-6.jpg",
           },
           {
+            title: "Cinta di Taman",
+            subtitle: "Harmony in Bloom",
+            desc: "Momen sederhana, rasa yang dalam, tenang, hangat, dan penuh syukur.",
+            tag: "SCENE 01",
+            img: "images/taman/taman-7.jpg",
+          },
+          {
             title: "Lamaran",
             subtitle: "The Promise",
-            desc: "Satu pertanyaan, satu jawaban—dan ribuan doa yang mengiringi. Momen ketika hati berkomitmen selamanya.",
+            desc: "Satu pertanyaan, satu jawaban, dan ribuan doa yang mengiringi. Momen ketika hati berkomitmen selamanya.",
             tag: "SCENE 02",
             img: "images/lamaran/lamaran-1.jpg",
           },
           {
             title: "Lamaran",
             subtitle: "The Promise",
-            desc: "Satu pertanyaan, satu jawaban—dan ribuan doa yang mengiringi.",
+            desc: "Satu pertanyaan, satu jawaban, dan ribuan doa yang mengiringi.",
             tag: "SCENE 02",
             img: "images/lamaran/lamaran-2.jpg",
           },
           {
             title: "Lamaran",
             subtitle: "The Promise",
-            desc: "Satu pertanyaan, satu jawaban—dan ribuan doa yang mengiringi.",
+            desc: "Satu pertanyaan, satu jawaban, dan ribuan doa yang mengiringi.",
             tag: "SCENE 02",
             img: "images/lamaran/lamaran-3.jpg",
           },
           {
             title: "Lamaran",
             subtitle: "The Promise",
-            desc: "Satu pertanyaan, satu jawaban—dan ribuan doa yang mengiringi.",
+            desc: "Satu pertanyaan, satu jawaban, dan ribuan doa yang mengiringi.",
             tag: "SCENE 02",
             img: "images/lamaran/lamaran-4.jpg",
           },
           {
             title: "Lamaran",
             subtitle: "The Promise",
-            desc: "Satu pertanyaan, satu jawaban—dan ribuan doa yang mengiringi.",
+            desc: "Satu pertanyaan, satu jawaban, dan ribuan doa yang mengiringi.",
             tag: "SCENE 02",
             img: "images/lamaran/lamaran-5.jpg",
           },
           {
             title: "Lamaran",
             subtitle: "The Promise",
-            desc: "Satu pertanyaan, satu jawaban—dan ribuan doa yang mengiringi.",
+            desc: "Satu pertanyaan, satu jawaban, dan ribuan doa yang mengiringi.",
             tag: "SCENE 02",
             img: "images/lamaran/lamaran-6.jpg",
           },
           {
             title: "Lamaran",
             subtitle: "The Promise",
-            desc: "Satu pertanyaan, satu jawaban—dan ribuan doa yang mengiringi.",
+            desc: "Satu pertanyaan, satu jawaban, dan ribuan doa yang mengiringi.",
             tag: "SCENE 02",
             img: "images/lamaran/lamaran-7.jpg",
           },
           {
             title: "Lamaran",
             subtitle: "The Promise",
-            desc: "Satu pertanyaan, satu jawaban—dan ribuan doa yang mengiringi.",
+            desc: "Satu pertanyaan, satu jawaban, dan ribuan doa yang mengiringi.",
             tag: "SCENE 02",
             img: "images/lamaran/lamaran-8.jpg",
           },
           {
             title: "Lamaran",
             subtitle: "The Promise",
-            desc: "Satu pertanyaan, satu jawaban—dan ribuan doa yang mengiringi.",
+            desc: "Satu pertanyaan, satu jawaban, dan ribuan doa yang mengiringi.",
             tag: "SCENE 02",
             img: "images/lamaran/lamaran-9.jpg",
           },
           {
             title: "Lamaran",
             subtitle: "The Promise",
-            desc: "Satu pertanyaan, satu jawaban—dan ribuan doa yang mengiringi.",
+            desc: "Satu pertanyaan, satu jawaban, dan ribuan doa yang mengiringi.",
             tag: "SCENE 02",
             img: "images/lamaran/lamaran-10.jpg",
           },
           {
             title: "Adat Betawi Merah",
             subtitle: "Her Roots",
-            desc: "Merah yang berani, tradisi yang kuat—asal usul yang selalu dibanggakan. Warna cerah melambangkan semangat dan kegembiraan.",
+            desc: "Merah yang berani, tradisi yang kuat, asal usul yang selalu dibanggakan. Warna cerah melambangkan semangat dan kegembiraan.",
             tag: "SCENE 03",
             img: "images/betawi/betawi-1.jpg",
           },
           {
             title: "Adat Betawi Merah",
             subtitle: "Her Roots",
-            desc: "Merah yang berani, tradisi yang kuat—asal usul yang selalu dibanggakan.",
+            desc: "Merah yang berani, tradisi yang kuat, asal usul yang selalu dibanggakan.",
             tag: "SCENE 03",
             img: "images/betawi/betawi-2.jpg",
           },
           {
             title: "Adat Betawi Merah",
             subtitle: "Her Roots",
-            desc: "Merah yang berani, tradisi yang kuat—asal usul yang selalu dibanggakan.",
+            desc: "Merah yang berani, tradisi yang kuat, asal usul yang selalu dibanggakan.",
             tag: "SCENE 03",
             img: "images/betawi/betawi-3.jpg",
           },
           {
             title: "Adat Betawi Merah",
             subtitle: "Her Roots",
-            desc: "Merah yang berani, tradisi yang kuat—asal usul yang selalu dibanggakan.",
+            desc: "Merah yang berani, tradisi yang kuat, asal usul yang selalu dibanggakan.",
             tag: "SCENE 03",
             img: "images/betawi/betawi-4.jpg",
           },
           {
             title: "Adat Betawi Merah",
             subtitle: "Her Roots",
-            desc: "Merah yang berani, tradisi yang kuat—asal usul yang selalu dibanggakan.",
+            desc: "Merah yang berani, tradisi yang kuat, asal usul yang selalu dibanggakan.",
             tag: "SCENE 03",
             img: "images/betawi/betawi-5.jpg",
           },
           {
             title: "Adat Betawi Merah",
             subtitle: "Her Roots",
-            desc: "Merah yang berani, tradisi yang kuat—asal usul yang selalu dibanggakan.",
+            desc: "Merah yang berani, tradisi yang kuat, asal usul yang selalu dibanggakan.",
             tag: "SCENE 03",
             img: "images/betawi/betawi-6.jpg",
           },
           {
             title: "Adat Betawi Merah",
             subtitle: "Her Roots",
-            desc: "Merah yang berani, tradisi yang kuat—asal usul yang selalu dibanggakan.",
+            desc: "Merah yang berani, tradisi yang kuat, asal usul yang selalu dibanggakan.",
             tag: "SCENE 03",
             img: "images/betawi/betawi-7.jpg",
           },
           {
             title: "Adat Betawi Merah",
             subtitle: "Her Roots",
-            desc: "Merah yang berani, tradisi yang kuat—asal usul yang selalu dibanggakan.",
+            desc: "Merah yang berani, tradisi yang kuat, asal usul yang selalu dibanggakan.",
             tag: "SCENE 03",
             img: "images/betawi/betawi-8.jpg",
           },
           {
             title: "Adat Betawi Merah",
             subtitle: "Her Roots",
-            desc: "Merah yang berani, tradisi yang kuat—asal usul yang selalu dibanggakan.",
+            desc: "Merah yang berani, tradisi yang kuat, asal usul yang selalu dibanggakan.",
             tag: "SCENE 03",
             img: "images/betawi/betawi-9.jpg",
           },
           {
             title: "Adat Betawi Merah",
             subtitle: "Her Roots",
-            desc: "Merah yang berani, tradisi yang kuat—asal usul yang selalu dibanggakan.",
+            desc: "Merah yang berani, tradisi yang kuat, asal usul yang selalu dibanggakan.",
             tag: "SCENE 03",
             img: "images/betawi/betawi-10.jpg",
           },
           {
             title: "Adat Jawa Janggan Hitam",
             subtitle: "His Roots",
-            desc: "Elegan, tegas, dan penuh makna—warisan yang dibawa menuju masa depan. Hitam yang dalam mewakili keseriusan dan kemuliaan.",
+            desc: "Elegan, tegas, dan penuh makna. Hitam yang dalam mewakili keseriusan dan kemuliaan.",
             tag: "SCENE 04",
             img: "images/jawa/jawa-1.jpg",
           },
           {
             title: "Adat Jawa Janggan Hitam",
             subtitle: "His Roots",
-            desc: "Elegan, tegas, dan penuh makna—warisan yang dibawa menuju masa depan.",
+            desc: "Elegan, tegas, dan penuh makna.",
             tag: "SCENE 04",
             img: "images/jawa/jawa-2.jpg",
           },
           {
             title: "Adat Jawa Janggan Hitam",
             subtitle: "His Roots",
-            desc: "Elegan, tegas, dan penuh makna—warisan yang dibawa menuju masa depan.",
+            desc: "Elegan, tegas, dan penuh makna.",
             tag: "SCENE 04",
             img: "images/jawa/jawa-3.jpg",
           },
           {
             title: "Adat Jawa Janggan Hitam",
             subtitle: "His Roots",
-            desc: "Elegan, tegas, dan penuh makna—warisan yang dibawa menuju masa depan.",
+            desc: "Elegan, tegas, dan penuh makna.",
             tag: "SCENE 04",
             img: "images/jawa/jawa-4.jpg",
           },
           {
             title: "Adat Jawa Janggan Hitam",
             subtitle: "His Roots",
-            desc: "Elegan, tegas, dan penuh makna—warisan yang dibawa menuju masa depan.",
+            desc: "Elegan, tegas, dan penuh makna.",
             tag: "SCENE 04",
             img: "images/jawa/jawa-5.jpg",
           },
           {
             title: "Adat Jawa Janggan Hitam",
             subtitle: "His Roots",
-            desc: "Elegan, tegas, dan penuh makna—warisan yang dibawa menuju masa depan.",
+            desc: "Elegan, tegas, dan penuh makna.",
             tag: "SCENE 04",
             img: "images/jawa/jawa-6.jpg",
           },
           {
             title: "Adat Jawa Janggan Hitam",
             subtitle: "His Roots",
-            desc: "Elegan, tegas, dan penuh makna—warisan yang dibawa menuju masa depan.",
+            desc: "Elegan, tegas, dan penuh makna.",
             tag: "SCENE 04",
             img: "images/jawa/jawa-7.jpg",
           },
           {
             title: "Adat Jawa Janggan Hitam",
             subtitle: "His Roots",
-            desc: "Elegan, tegas, dan penuh makna—warisan yang dibawa menuju masa depan.",
+            desc: "Elegan, tegas, dan penuh makna.",
             tag: "SCENE 04",
             img: "images/jawa/jawa-8.jpg",
           },
           {
             title: "Adat Jawa Janggan Hitam",
             subtitle: "His Roots",
-            desc: "Elegan, tegas, dan penuh makna—warisan yang dibawa menuju masa depan.",
+            desc: "Elegan, tegas, dan penuh makna.",
             tag: "SCENE 04",
             img: "images/jawa/jawa-9.jpg",
           },
           {
             title: "Adat Jawa Janggan Hitam",
             subtitle: "His Roots",
-            desc: "Elegan, tegas, dan penuh makna—warisan yang dibawa menuju masa depan.",
+            desc: "Elegan, tegas, dan penuh makna.",
             tag: "SCENE 04",
             img: "images/jawa/jawa-10.jpg",
           },
+          {
+            title: "Latar Belakang Biru",
+            subtitle: "Blues Background",
+            desc: "Melangkah ke Arsip Sipil.",
+            tag: "SCENE 05",
+            img: "images/latarbiru/latarbiru-1.jpg",
+          },
+          {
+            title: "Latar Belakang Biru",
+            subtitle: "Blues Background",
+            desc: "Melangkah ke Arsip Sipil.",
+            tag: "SCENE 05",
+            img: "images/latarbiru/latarbiru-2.jpg",
+          },
+          {
+            title: "Latar Belakang Biru",
+            subtitle: "Blues Background",
+            desc: "Melangkah ke Arsip Sipil.",
+            tag: "SCENE 05",
+            img: "images/latarbiru/latarbiru-3.jpg",
+          },
+          {
+            title: "Latar Belakang Biru",
+            subtitle: "Blues Background",
+            desc: "Melangkah ke Arsip Sipil.",
+            tag: "SCENE 05",
+            img: "images/latarbiru/latarbiru-4.jpg",
+          },
+          {
+            title: "Latar Belakang Biru",
+            subtitle: "Blues Background",
+            desc: "Melangkah ke Arsip Sipil.",
+            tag: "SCENE 05",
+            img: "images/latarbiru/latarbiru-5.jpg",
+          },
+          {
+            title: "Latar Belakang Biru",
+            subtitle: "Blues Background",
+            desc: "Melangkah ke Arsip Sipil.",
+            tag: "SCENE 05",
+            img: "images/latarbiru/latarbiru-6.jpg",
+          },
+          
         ],
 
         // Wedding gift
@@ -1166,13 +1149,19 @@
               logo: "BCA.png",
               label: "BCA",
               owner: "Muhamad Rizky Ardiansyah",
-              number: "1234567890",
+              number: "0661352271",
             },
             {
               logo: "BNI.png",
               label: "BNI",
               owner: "Muhamad Rizky Ardiansyah",
-              number: "0812xxxxxxx",
+              number: "1174630050",
+            },
+            {
+              logo: "BCA.png",
+              label: "BCA",
+              owner: "Ria Indah Nurbaiti",
+              number: "7285178801",
             },
           ],
         },
@@ -1256,9 +1245,13 @@
 
         $("#brandText").textContent = coupleShort;
 
-        $("#coverNames").innerHTML =
-          `${escapeHtml(CONFIG.groomShort)} &amp; ${escapeHtml(CONFIG.brideShort)}`;
+        $(".wedding-text-hint").innerHTML = `${escapeHtml(CONFIG.groomShort)} &amp; ${escapeHtml(CONFIG.brideShort)}`;
         $("#coverDate").textContent = CONFIG.weddingDateText;
+
+        if (CONFIG.netflixAvatars && CONFIG.netflixAvatars.length > 0) {
+          const randomIndex = Math.floor(Math.random() * CONFIG.netflixAvatars.length);
+          $("#netflixAvatar").src = CONFIG.netflixAvatars[randomIndex];
+        }
 
         $("#saveTitle").innerHTML =
           `The Wedding of <br> ${escapeHtml(CONFIG.groomShort)} &amp; ${escapeHtml(CONFIG.brideShort)}`;
@@ -1277,23 +1270,13 @@
         const brideImg = $("#imgBride");
         if (CONFIG.groomPhoto) {
           groomImg.src = CONFIG.groomPhoto;
-          // $("#groomInitials").style.display = "none";
         } else {
           groomImg.style.display = "none";
-          // $("#groomInitials").style.display = "block";
-          // $("#groomInitials").textContent = (CONFIG.groomShort || "PR")
-          //   .slice(0, 2)
-          //   .toUpperCase();
         }
         if (CONFIG.bridePhoto) {
           brideImg.src = CONFIG.bridePhoto;
-          // $("#brideInitials").style.display = "none";
         } else {
           brideImg.style.display = "none";
-          // $("#brideInitials").style.display = "block";
-          // $("#brideInitials").textContent = (CONFIG.brideShort || "WN")
-          //   .slice(0, 2)
-          //   .toUpperCase();
         }
 
         // event lines
@@ -1439,7 +1422,7 @@
       let modalPos = 0;
       let modalTag = "";
 
-      // Build gallery grid dengan 4 album preview
+      // Build gallery
       function buildGallery() {
         const grid = document.getElementById("galleryGrid");
         const albums = {};
@@ -1539,9 +1522,42 @@
         document.getElementById("modalTitle").textContent = g.title;
         document.getElementById("modalSubtitle").textContent = g.subtitle;
         document.getElementById("modalDesc").textContent = g.desc;
-        document.getElementById("modalImg").src = g.img;
+        
+        const modalImg = document.getElementById("modalImg");
+        modalImg.src = g.img;
         document.getElementById("modalProgress").textContent =
           `${modalPos + 1}/${modalGroup.length}`;
+
+        // =========================================================
+        // SETTING FANCYBOX KHUSUS LIHAT SATU FOTO & ZOOM SAJA
+        // =========================================================
+        modalImg.onclick = null; // Hapus sisa event listener lama jika ada
+        
+        modalImg.onclick = function() {
+          // Hanya masukkan 1 foto aktif ini saja ke dalam Fancybox
+          Fancybox.show([
+            {
+              src: g.img,
+              caption: `<h4>${g.title}</h4><p>${g.desc}</p>`
+            }
+          ], {
+            // Hilangkan komponen navigasi & geser (Carousel)
+            Carousel: {
+              Panzoom: {
+                touch: false // Mengunci agar tidak bisa di-swipe geser di HP
+              }
+            },
+            // Atur tombol toolbar atas agar fokus ke fungsi Zoom dan Close saja
+            Toolbar: {
+              display: {
+                left: [],
+                middle: [],
+                right: ["zoom", "close"],
+              },
+            },
+          });
+        };
+        // =========================================================
       }
 
       function closeModal() {
@@ -1680,12 +1696,12 @@
           const text = document.getElementById("wishText").value.trim();
 
           if (!name || !text) {
-            alert("Nama dan ucapan tidak boleh kosong");
+            alert("Nama dan ucapan tidak boleh kosong ya! 😊");
             return;
           }
 
           if (!selectedEmoji) {
-            alert("Pilih emoticon terlebih dahulu");
+            alert("Pilih emoticon terlebih dahulu ya! 😊");
             return;
           }
 
@@ -1879,21 +1895,9 @@
           return;
         }
 
-        // ... insert to database ...
-
         localStorage.setItem(LAST_WISH_TIME, String(now));
       }
 
-      function saveRsvp(data) {
-        localStorage.setItem(LS_RSVP, JSON.stringify(data));
-      }
-      function loadRsvp() {
-        try {
-          return JSON.parse(localStorage.getItem(LS_RSVP) || "null");
-        } catch {
-          return null;
-        }
-      }
 
       /***********************
        * Music
@@ -1943,16 +1947,16 @@
       function openInvitation() {
         // show transition then hide overlay
         $("#transition").classList.add("show");
+        $("#overlay").classList.add("hidden");
         setTimeout(() => {
           $("#transition").classList.remove("show");
-          $("#overlay").classList.add("hidden");
           $("#fab").classList.add("show");
 
           // smooth scroll to first section
           window.scrollTo({ top: 0, behavior: "smooth" });
           // attempt music start (allowed because it follows user click)
           startMusic();
-        }, 900);
+        }, 1200);
       }
 
       function initHeroVideo() {
@@ -2044,23 +2048,7 @@
 
         $("#openBtn").addEventListener("click", openInvitation);
 
-        //$("#guestBtn").addEventListener("click", () => {
-        //  const name = prompt(
-        //    "Masukkan nama tamu (akan jadi ?to=...):",
-        //    getQueryParam("to") || "",
-        //  );
-        //  if (name !== null) {
-        //    setQueryParam("to", name.trim());
-        //    $("#guestName").textContent = name.trim() || "Tamu Undangan";
-        //    showToast("Nama tamu di-set ✅");
-        //  }
-        //});
-
         $("#musicBtn").addEventListener("click", toggleMusic);
-
-        // $("#copyLinkBtn").addEventListener("click", () =>
-        //   copyText(getInviteLink()),
-        // );
 
         $("#giftRevealBtn").addEventListener("click", () => {
           $("#giftReveal").classList.toggle("show");
@@ -2105,29 +2093,6 @@
           $("#wishText").value = "";
           showToast("Ucapan terkirim (local) ✅");
         });
-
-        // RSVP form
-        // $("#rsvpForm").addEventListener("submit", (e) => {
-        //   e.preventDefault();
-        //   const data = {
-        //     name: $("#rsvpName").value.trim(),
-        //     status: $("#rsvpStatus").value,
-        //     guests: $("#rsvpGuests").value,
-        //     time: new Date().toISOString(),
-        //   };
-        //   if (!data.name || !data.status) return;
-        //   saveRsvp(data);
-        //   showToast("RSVP tersimpan (local) ✅");
-        // });
-
-        // $("#copyRsvpBtn").addEventListener("click", async () => {
-        //   const data = loadRsvp();
-        //   const text = data
-        //     ? `RSVP — ${CONFIG.groomShort} & ${CONFIG.brideShort}\nNama: ${data.name}\nKehadiran: ${data.status}\nJumlah tamu: ${data.guests}\nTanggal: ${CONFIG.weddingDateText}`
-        //     : `RSVP — ${CONFIG.groomShort} & ${CONFIG.brideShort}\nNama: [isi]\nKehadiran: [Hadir/Tidak/Masih Ragu]\nJumlah tamu: [1/2]\nTanggal: ${CONFIG.weddingDateText}`;
-        //   await copyText(text);
-        //   showToast("RSVP text copied ✅");
-        // });
 
         // scroll top + share
         $("#scrollTopBtn").addEventListener("click", () =>
