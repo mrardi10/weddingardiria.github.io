@@ -11,6 +11,241 @@
     />
 
     <link rel="stylesheet" href="styles/invitation_main.css" />
+    
+    <style>
+      /* ===== SCROLL SNAPPING ===== */
+      html {
+        scroll-behavior: smooth;
+        scroll-snap-type: y mandatory;
+      }
+
+      body {
+        scroll-snap-type: y mandatory;
+      }
+
+      /* Snap container untuk setiap section */
+      .section {
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      /* Special snapping untuk overlay */
+      .overlay {
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+      }
+
+      /* Fine-tune snap behavior */
+      main {
+        scroll-snap-type: y proximity;
+      }
+
+      /* ===== BATIK THEME BORDER ===== */
+      .profileCard {
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Batik pattern border effect */
+      .profileCard::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 8px;
+        border: 3px solid;
+        border-image: linear-gradient(135deg, #8B4513 0%, #D2691E 25%, #A0522D 50%, #D2691E 75%, #8B4513 100%) 1;
+        pointer-events: none;
+        box-shadow: 
+          inset 0 0 20px rgba(210, 105, 30, 0.1),
+          0 0 30px rgba(139, 69, 19, 0.3);
+      }
+
+      .profileCard {
+        animation: batikGlow 4s ease-in-out infinite;
+        border-radius: 8px;
+      }
+
+      @keyframes batikGlow {
+        0%, 100% {
+          box-shadow: 0 4px 15px rgba(139, 69, 19, 0.25), inset 0 0 20px rgba(210, 105, 30, 0.05);
+        }
+        50% {
+          box-shadow: 0 8px 30px rgba(139, 69, 19, 0.45), inset 0 0 30px rgba(210, 105, 30, 0.15);
+        }
+      }
+
+      /* Add batik pattern background */
+      .profileCard::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+          repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(139, 69, 19, 0.02) 10px, rgba(139, 69, 19, 0.02) 20px),
+          repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(210, 105, 30, 0.02) 10px, rgba(210, 105, 30, 0.02) 20px);
+        border-radius: 8px;
+        pointer-events: none;
+      }
+
+      /* ===== SCROLL ANIMATIONS ===== */
+      .fade-in-up {
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      }
+
+      .fade-in-left {
+        opacity: 0;
+        transform: translateX(-40px);
+        animation: fadeInLeft 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      }
+
+      .fade-in-right {
+        opacity: 0;
+        transform: translateX(40px);
+        animation: fadeInRight 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      }
+
+      .scale-in {
+        opacity: 0;
+        transform: scale(0.8);
+        animation: scaleIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      }
+
+      .rotate-in {
+        opacity: 0;
+        transform: rotateY(90deg);
+        animation: rotateIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes fadeInRight {
+        from {
+          opacity: 0;
+          transform: translateX(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes scaleIn {
+        from {
+          opacity: 0;
+          transform: scale(0.8);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes rotateIn {
+        from {
+          opacity: 0;
+          transform: rotateY(90deg);
+        }
+        to {
+          opacity: 1;
+          transform: rotateY(0);
+        }
+      }
+
+      /* ===== SCROLL LOCK ===== */
+      body.scroll-locked {
+        overflow: hidden;
+        height: 100vh;
+      }
+
+      /* Profile section animations */
+      .profileCard {
+        transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      .profileCard.fade-in-up {
+        animation: fadeInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      }
+
+      .profileCard.fade-in-left {
+        animation: fadeInLeft 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      }
+
+      .profileCard.fade-in-right {
+        animation: fadeInRight 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      }
+
+      /* Stagger animation untuk multiple elements */
+      .profileCard:nth-child(1) {
+        animation-delay: 0.1s !important;
+      }
+
+      .profileCard:nth-child(2) {
+        animation-delay: 0.3s !important;
+      }
+
+      .card.fade-in-up {
+        animation-delay: 0.2s;
+      }
+
+      .section h2.fade-in-up {
+        animation-delay: 0.1s;
+      }
+
+      /* Floating effect on scroll */
+      .float-on-scroll {
+        animation: floatAnimation 3s ease-in-out infinite;
+      }
+
+      @keyframes floatAnimation {
+        0%, 100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      /* Smooth transition untuk semua elements */
+      * {
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+
+      /* Snap spacing - padding untuk setiap section */
+      .section .wrap {
+        padding: 40px 20px;
+      }
+    </style>
   </head>
 
   <body>
@@ -317,7 +552,6 @@
               <div class="pad">
                 <div class="titleRow">
                   <h3 style="margin: 0">Akad Nikah</h3>
-                  <span class="tag">AKAD</span>
                 </div>
                 <div class="lines" id="akadLines">
                   🗓️ <b>[Hari, Tanggal]</b><br />
@@ -339,7 +573,6 @@
               <div class="pad">
                 <div class="titleRow">
                   <h3 style="margin: 0">Resepsi</h3>
-                  <span class="tag">RESEPSI</span>
                 </div>
                 <div class="lines" id="resepsiLines">
                   🗓️ <b>[Hari, Tanggal]</b><br />
@@ -785,7 +1018,7 @@
         groomParents:
           "Putra Pertama dari <br> Bapak Muhamad Syahid & Ibu Marwiyah",
         brideParents:
-          "Putri Pertama dari <br> Bapak Alm. Tri Yuniarto & Ibu Mayanah",
+          "Putri Tunggal dari <br> Bapak Alm. Tri Yuniarto & Ibu Mayanah",
 
         // Instagram (isi full url)
         groomInstagram: "https://www.instagram.com/ardiansyah.mr10/",
@@ -1252,6 +1485,21 @@
           const randomIndex = Math.floor(Math.random() * CONFIG.netflixAvatars.length);
           $("#netflixAvatar").src = CONFIG.netflixAvatars[randomIndex];
         }
+        // Set avatar based on guest type parameter
+        const guestType = getQueryParam("from") || "guest";
+        let avatarIndex = 0;
+
+        if (guestType === "bride") {
+          avatarIndex = 0; // red
+        } else if (guestType === "groom") {
+          avatarIndex = 2; // blue
+        } else if (guestType === "parentbride") {
+          avatarIndex = 3; // green
+        } else if (guestType === "parentgroom") {
+          avatarIndex = 1; // yellow
+        }
+
+        $("#netflixAvatar").src = CONFIG.netflixAvatars[avatarIndex];
 
         $("#saveTitle").innerHTML =
           `The Wedding of <br> ${escapeHtml(CONFIG.groomShort)} &amp; ${escapeHtml(CONFIG.brideShort)}`;
@@ -1948,6 +2196,9 @@
         // show transition then hide overlay
         $("#transition").classList.add("show");
         $("#overlay").classList.add("hidden");
+        // Remove scroll lock
+        document.body.classList.remove('scroll-locked');
+        
         setTimeout(() => {
           $("#transition").classList.remove("show");
           $("#fab").classList.add("show");
@@ -1956,7 +2207,54 @@
           window.scrollTo({ top: 0, behavior: "smooth" });
           // attempt music start (allowed because it follows user click)
           startMusic();
+          // Trigger scroll animations
+          triggerScrollAnimations();
+
+          // Play hero video if exists
+          const v = document.getElementById("teaserVideo");
+          v.play().catch(() => {});
+          videoPlayed = true;
+
+          initHeroVideo();
         }, 1200);
+      }
+
+      /***********************
+       * Scroll Animations
+       ***********************/
+      function triggerScrollAnimations() {
+        // Trigger animations untuk semua sections
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry, index) => {
+              if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                entry.target.classList.add('animated');
+                
+                // Assign random animation
+                const animations = ['fade-in-up', 'fade-in-left', 'fade-in-right', 'scale-in'];
+                const randomAnim = animations[index % animations.length];
+                
+                entry.target.classList.add(randomAnim);
+                
+                // Untuk profile cards, trigger khusus
+                if (entry.target.classList.contains('profileCard')) {
+                  entry.target.classList.add(index % 2 === 0 ? 'fade-in-left' : 'fade-in-right');
+                }
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+
+        // Observe semua sections dan cards
+        document.querySelectorAll('.section, .card, .profileCard, .heroBanner').forEach((el) => {
+          observer.observe(el);
+        });
+
+        // Observe individual elements dalam hero
+        document.querySelectorAll('.heroTitle, .heroDate, .heroDesc, .heroActions').forEach((el) => {
+          observer.observe(el);
+        });
       }
 
       function initHeroVideo() {
@@ -1967,45 +2265,44 @@
 
         if (!v) return;
 
-        // Autoplay attempt (muted) — biasanya aman
-        const tryPlay = () => v.play().catch(() => {});
-
-        // Pause kalau user scroll jauh (lebih rapi & hemat)
-        const io = new IntersectionObserver(
-          (entries) => {
-            const entry = entries[0];
-            if (entry.isIntersecting) tryPlay();
-            else v.pause();
-          },
-          { threshold: 0.25 },
-        );
-
-        io.observe(media);
-
+        // JANGAN autoplay - hanya play saat user klik
+        let videoPlayed = false;
+        
         const syncButtons = () => {
           toggle.textContent = v.paused ? "▶" : "⏸";
         };
 
         toggle.addEventListener("click", () => {
-          if (v.paused) v.play().catch(() => {});
-          else v.pause();
+          if (v.paused) {
+            v.play().catch(() => {});
+            videoPlayed = true;
+          } else v.pause();
           syncButtons();
         });
-
 
         // Klik video area = play/pause
         media.addEventListener("click", (e) => {
           // biar klik tombol gak ikut memicu
           if (e.target.closest("button,a")) return;
-          if (v.paused) v.play().catch(() => {});
-          else v.pause();
+          if (v.paused) {
+            v.play().catch(() => {});
+            videoPlayed = true;
+          } else v.pause();
           syncButtons();
         });
 
-        // init state
+        // init state - TIDAK autoplay
         v.muted = true;
-        tryPlay();
+        // HAPUS tryPlay() - video tidak akan auto play
         syncButtons();
+
+        // Trigger scroll animations saat video pertama kali diplay
+        v.addEventListener("play", () => {
+          if (!videoPlayed) {
+            videoPlayed = true;
+            triggerScrollAnimations();
+          }
+        }, { once: true });
       }
 
       /***********************
@@ -2040,7 +2337,9 @@
       function init() {
         applyConfig();
         startCountdown();
-        initHeroVideo();
+
+        // Lock scroll while overlay is visible
+        document.body.classList.add('scroll-locked');
 
         // set guest name from ?to=
         const to = getQueryParam("to");

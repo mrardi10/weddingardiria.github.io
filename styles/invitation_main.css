@@ -664,7 +664,7 @@ body {
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   transform: scale(1.02);
   filter: saturate(1.05) contrast(1.05);
 }
@@ -1931,6 +1931,10 @@ select:focus {
   .gallery-grid {
     grid-template-columns: 1fr;
     gap: 24px;
+  }
+
+  .heroVideo{
+    object-fit: cover;
   }
 
   .modal-header {
